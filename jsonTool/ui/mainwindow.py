@@ -14,6 +14,10 @@ from ui.tab_viewer import ViewerTab
 from ui.tab_editor import EditorTab
 from core.document import JSONDocument
 from ui.tab_doc import DocTab
+from ui.tab_unziper import UnziperTab
+from ui.tab_splitter import SplitterTab
+
+
 
 
 
@@ -53,9 +57,13 @@ class MainWindow(QMainWindow):
         # Tab: Viewer (read-only) & Editor (editable)
         self.viewer_tab = ViewerTab(self, document=self.document)
         self.editor_tab = EditorTab(self, document=self.document)
+        self.splitter_tab = SplitterTab(self)
+        self.unziper_tab = UnziperTab(self)
         self.doc_tab = DocTab(self, config_ref=self._config, save_config_cb=self._save_user_config)
         self.tabs.addTab(self.viewer_tab, "Viewer")
         self.tabs.addTab(self.editor_tab, "Editor")
+        self.tabs.addTab(self.splitter_tab, "Splitter")
+        self.tabs.addTab(self.unziper_tab, "Unziper")
         self.tabs.addTab(self.doc_tab, "Docs")
 
 
