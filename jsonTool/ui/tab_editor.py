@@ -24,10 +24,15 @@ class EditorTab(QWidget):
         root_layout = QVBoxLayout(self)
 
         toolbar = QHBoxLayout()
-        self.btn_expand_all = QPushButton("Expand All ＜", self)
-        self.btn_collapse_all = QPushButton("Collapse All ＝", self)
-        self.btn_expand_sel = QPushButton("Expand Selection ＜", self)
-        self.btn_collapse_sel = QPushButton("Collapse Selection ＝", self)
+        # 精简符号 + 英文 tooltip
+        self.btn_expand_all = QPushButton("[]<", self)
+        self.btn_expand_all.setToolTip("Expand All")
+        self.btn_collapse_all = QPushButton("[]=", self)
+        self.btn_collapse_all.setToolTip("Collapse All")
+        self.btn_expand_sel = QPushButton("+<", self)
+        self.btn_expand_sel.setToolTip("Expand Selection")
+        self.btn_collapse_sel = QPushButton("+=", self)
+        self.btn_collapse_sel.setToolTip("Collapse Selection")
 
         toolbar.addWidget(self.btn_expand_all)
         toolbar.addWidget(self.btn_collapse_all)
@@ -35,6 +40,7 @@ class EditorTab(QWidget):
         toolbar.addWidget(self.btn_collapse_sel)
         toolbar.addStretch(1)
         root_layout.addLayout(toolbar)
+
 
         self.tree_view = QTreeView(self)
         root_layout.addWidget(self.tree_view)

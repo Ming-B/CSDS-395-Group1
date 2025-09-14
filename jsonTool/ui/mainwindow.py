@@ -186,6 +186,7 @@ class MainWindow(QMainWindow):
         self._refresh_history_buttons()
 
     # ---------------- Busy Banner API ----------------
+    # ---------------- Busy Banner API ----------------
     def set_busy(self, is_busy: bool, msg: str = "Working... please do not repeat operations"):
         if is_busy:
             self._busy_banner(msg)
@@ -202,7 +203,11 @@ class MainWindow(QMainWindow):
 
     def _idle_banner(self):
         self._busy_label.setText("")
-        self._busy_label.setStyleSheet("")
+        # 清空样式，恢复默认
+        self._busy_label.setStyleSheet(
+            "QLabel { background: transparent; color: black; padding: 0px; }"
+        )
+
 
     # ---------------- File Actions ----------------
     def _action_open_file(self):

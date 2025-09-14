@@ -1,0 +1,7268 @@
+{
+  "orbitalSupportBattleBalance": {
+    "ships": [
+      {
+        "id": "Keel",
+        "icon": "ch_Keel_ability",
+        "abilities": [
+          "KEEL_ADDITION_TITAN_DMG",
+          "KEEL_CHARGE_SPEED",
+          "HUNTER_DEAL_DAMAGE"
+        ]
+      },
+      {
+        "id": "Frederick",
+        "icon": "ch_Frederick_ability",
+        "abilities": [
+          "FREDERICK_CHARGE_SPEED",
+          "FREDERICK_WEAKENING_DAMAGE",
+          "FREDERICK_WEAKENING_SPEED"
+        ]
+      },
+      {
+        "id": "Dreadnought",
+        "icon": "ch_Dreadnought_ability",
+        "abilities": [
+          "DREADNOUGHT_DEAL_DAMAGE",
+          "DREADNOUGHT_CHARGE_SPEED"
+        ]
+      },
+      {
+        "id": "Beholder",
+        "icon": "ch_Beholder_ability",
+        "abilities": [
+          "BEHOLDER_CHARGE_SPEED",
+          "BEHOLDER_BEAM_DAMAGE",
+          "BEHOLDER_AOE_BLAST"
+        ]
+      },
+      {
+        "id": "Monarch",
+        "icon": "ch_Monarch_ability",
+        "abilities": [
+          "MONARCH_DEAL_DAMAGE",
+          "MONARCH_CHARGE_SPEED",
+          "MONARCH_DOT"
+        ]
+      },
+      {
+        "id": "Bifrost",
+        "icon": "ch_Bifrost_ability",
+        "abilities": [
+          "BIFROST_CHARGE_SPEED",
+          "BIFROST_WEAKENING_ARMOR",
+          "BIFROST_CLEANCEONCE",
+          "BIFROST_PENETRATION_RESIST"
+        ]
+      },
+      {
+        "id": "Roulette",
+        "icon": "ch_Roulette_ability",
+        "abilities": [
+          "ROULETTE_CHARGE_SPEED",
+          "ROULETTE_RUST",
+          "ROULETTE_DOT"
+        ]
+      },
+      {
+        "id": "Avalon",
+        "icon": "ch_Avalon_ability",
+        "abilities": [
+          "AVALON_CHARGE_SPEED",
+          "AVALON_CLEANSE",
+          "AVALON_HEAL"
+        ]
+      },
+      {
+        "id": "Mantis",
+        "icon": "ch_Mantis_ability",
+        "abilities": [
+          "MANTIS_BLAST_HEAL",
+          "MANTIS_BLAST_AEGIS",
+          "MANTIS_CHARGE_SPEED"
+        ]
+      },
+      {
+        "id": "Orion",
+        "icon": "ch_Orion_ability",
+        "abilities": [
+          "ORION_ADDITION_TITAN_DMG",
+          "ORION_CHARGE_SPEED",
+          "ORION_DEAL_DAMAGE"
+        ]
+      },
+      {
+        "id": "Thor",
+        "icon": "ch_Thor_ability",
+        "abilities": [
+          "THOR_SHOCKED",
+          "THOR_CHARGE_SPEED",
+          "THOR_DEAL_DAMAGE"
+        ]
+      },
+      {
+        "id": "Northlight",
+        "icon": "ch_Northlight_ability",
+        "abilities": [
+          "NORTHLIGHT_CHARGE_SPEED",
+          "NORTHLIGHT_HEAL",
+          "NORTHLIGHT_RESIST_BUFF"
+        ]
+      },
+      {
+        "id": "Sekhem",
+        "icon": "ch_Sekhem_ability",
+        "abilities": [
+          "SEKHEM_CHARGE_SPEED",
+          "SEKHEM_CARPET_DAMAGE"
+        ]
+      },
+      {
+        "id": "FrozenScorn",
+        "icon": "ch_FrozenScorn_ability",
+        "abilities": [
+          "FROZENSCORN_CHARGE_SPEED",
+          "FROZENSCORN_DOT",
+          "FROZENSCORN_FREEZE"
+        ]
+      },
+      {
+        "id": "Paladin",
+        "icon": "ch_Paladin_ability",
+        "abilities": [
+          "PALADIN_CHARGE_SPEED",
+          "PALADIN_RESTORATION_SHIELD"
+        ]
+      },
+      {
+        "id": "Mute",
+        "icon": "ch_Mute_ability",
+        "abilities": [
+          "MUTE_CHARGE_SPEED",
+          "MUTE_BLIND",
+          "MUTE_EMP"
+        ]
+      }
+    ],
+    "abilityParams": [
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_STACKPOLICY",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "effectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_EFFECTDURATION",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "MUTE_CHARGE_SPEED_RELATIVE",
+        "ability": "MUTE_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_RANGE",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_KIND",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "THOR_SHOCKED_RANGE",
+        "ability": "THOR_SHOCKED",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_EFFECTDURATION",
+        "ability": "ROULETTE_RUST",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 6.7
+          },
+          {
+            "level": 12,
+            "doubleValue": 7.07
+          },
+          {
+            "level": 13,
+            "doubleValue": 7.44
+          },
+          {
+            "level": 14,
+            "doubleValue": 7.81
+          },
+          {
+            "level": 15,
+            "doubleValue": 8.18
+          },
+          {
+            "level": 16,
+            "doubleValue": 8.55
+          },
+          {
+            "level": 17,
+            "doubleValue": 8.92
+          },
+          {
+            "level": 18,
+            "doubleValue": 9.29
+          },
+          {
+            "level": 19,
+            "doubleValue": 9.66
+          },
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 3.37
+          },
+          {
+            "level": 3,
+            "doubleValue": 3.74
+          },
+          {
+            "level": 4,
+            "doubleValue": 4.11
+          },
+          {
+            "level": 5,
+            "doubleValue": 4.48
+          },
+          {
+            "level": 6,
+            "doubleValue": 4.85
+          },
+          {
+            "level": 7,
+            "doubleValue": 5.22
+          },
+          {
+            "level": 8,
+            "doubleValue": 5.59
+          },
+          {
+            "level": 9,
+            "doubleValue": 5.96
+          },
+          {
+            "level": 20,
+            "doubleValue": 10.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 6.33
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_DOT_RANGE",
+        "ability": "FROZENSCORN_DOT",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 800.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_SPEED_KIND",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_SPEED",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "KEEL_CHARGE_SPEED_STATTYPE",
+        "ability": "KEEL_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "AVALON_CLEANSE_MERGEABLE",
+        "ability": "AVALON_CLEANSE",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_KIND",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_ACTIVATEHP",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "activateHp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2000.0
+          }
+        ]
+      },
+      {
+        "id": "LASER_BLAST_CANNON_DEAL_DAMAGE_RADIUS",
+        "ability": "LASER_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_HEALABSOLUTE",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "healAbsolute",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 102500.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 105000.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 107500.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 110000.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 112500.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 115000.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 117500.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 120000.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 122500.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 77500.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 80000.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 82500.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 85000.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 87500.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 90000.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 92500.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 95000.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 97500.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 125000.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 100000.0
+          }
+        ]
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_SHIELDKIND",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "shieldKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 12.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_VALUE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 38158.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 39474.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 40789.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 42105.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 43421.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 44737.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 46053.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 47368.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 48684.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 25000.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 26316.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 27632.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 28947.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 30263.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 31579.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 32895.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 34211.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 35526.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 50000.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 36842.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_DURATION",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 12.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_SHIELDKIND",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "shieldKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_KIND",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_VALUE",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 31.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 33.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 35.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 37.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 39.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 41.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 43.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 45.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 47.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 11.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 13.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 15.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 17.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 19.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 21.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 23.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 25.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 27.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 50.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 29.0
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_BURSTMARKEFFECT",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "burstMarkEffect",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_ARMORSTACKVALUE",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "armorStackValue",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 36.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 37.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 38.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 39.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 40.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 41.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 42.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 43.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 44.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 26.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 27.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 28.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 29.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 30.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 31.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 32.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 33.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 34.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 45.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 35.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_RADIUS",
+        "ability": "ROULETTE_DOT",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 100.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_VALUE",
+        "ability": "THOR_SHOCKED",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "MUTE_BLIND_VALUE",
+        "ability": "MUTE_BLIND",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_RADIUS",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 20.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_EFFECTDURATION",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 6.5
+          },
+          {
+            "level": 12,
+            "doubleValue": 6.75
+          },
+          {
+            "level": 13,
+            "doubleValue": 7.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 7.25
+          },
+          {
+            "level": 15,
+            "doubleValue": 7.5
+          },
+          {
+            "level": 16,
+            "doubleValue": 8.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 8.25
+          },
+          {
+            "level": 18,
+            "doubleValue": 8.5
+          },
+          {
+            "level": 19,
+            "doubleValue": 8.75
+          },
+          {
+            "level": 1,
+            "doubleValue": 4.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 4.25
+          },
+          {
+            "level": 3,
+            "doubleValue": 4.5
+          },
+          {
+            "level": 4,
+            "doubleValue": 4.75
+          },
+          {
+            "level": 5,
+            "doubleValue": 5.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 5.25
+          },
+          {
+            "level": 7,
+            "doubleValue": 5.5
+          },
+          {
+            "level": 8,
+            "doubleValue": 5.75
+          },
+          {
+            "level": 9,
+            "doubleValue": 6.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 9.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 6.25
+          }
+        ]
+      },
+      {
+        "id": "MUTE_BLIND_KIND",
+        "ability": "MUTE_BLIND",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MANTIS_CHARGE_SPEED_RELATIVE",
+        "ability": "MANTIS_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "REPAIR_BLAST_STATION_HEAL_RADIUS",
+        "ability": "REPAIR_BLAST_STATION_HEAL",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_SLOTKIND",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_HP",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "hp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 36000.0
+          }
+        ]
+      },
+      {
+        "id": "KEEL_ADDITION_TITAN_DMG_STATTYPE",
+        "ability": "KEEL_ADDITION_TITAN_DMG",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "MUTE_EMP_VALUE",
+        "ability": "MUTE_EMP",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_ISRELATIVE",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "isRelative",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_ADDITION_TITAN_DMG_STATTYPE",
+        "ability": "ORION_ADDITION_TITAN_DMG",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "FREDERICK_WEAKENING_DAMAGE_DELAY",
+        "ability": "FREDERICK_WEAKENING_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_ARMORGROWTIME",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "armorGrowTime",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEKIND",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeKind",
+        "levels": []
+      },
+      {
+        "id": "AVALON_CLEANSE_DELAY",
+        "ability": "AVALON_CLEANSE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_KIND",
+        "ability": "ROULETTE_RUST",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_PENETRATION_RESIST_KIND",
+        "ability": "BIFROST_PENETRATION_RESIST",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_DOT_VALUE",
+        "ability": "FROZENSCORN_DOT",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 6240.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 6480.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 6720.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 6960.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 7200.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 7440.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 7680.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 7920.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 8160.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 3840.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 4080.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 4320.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 4560.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 4800.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 5040.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 5280.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 5520.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 5760.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 8400.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 6000.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_DELAY",
+        "ability": "AVALON_HEAL",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_BLINDIMMUNE",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "blindImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_HEALRELATIVE",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "healRelative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 0.03
+          },
+          {
+            "level": 12,
+            "doubleValue": 0.031
+          },
+          {
+            "level": 13,
+            "doubleValue": 0.032
+          },
+          {
+            "level": 14,
+            "doubleValue": 0.033
+          },
+          {
+            "level": 15,
+            "doubleValue": 0.034
+          },
+          {
+            "level": 16,
+            "doubleValue": 0.035
+          },
+          {
+            "level": 17,
+            "doubleValue": 0.036
+          },
+          {
+            "level": 18,
+            "doubleValue": 0.037
+          },
+          {
+            "level": 19,
+            "doubleValue": 0.038
+          },
+          {
+            "level": 1,
+            "doubleValue": 0.02
+          },
+          {
+            "level": 2,
+            "doubleValue": 0.021
+          },
+          {
+            "level": 3,
+            "doubleValue": 0.022
+          },
+          {
+            "level": 4,
+            "doubleValue": 0.023
+          },
+          {
+            "level": 5,
+            "doubleValue": 0.024
+          },
+          {
+            "level": 6,
+            "doubleValue": 0.025
+          },
+          {
+            "level": 7,
+            "doubleValue": 0.026
+          },
+          {
+            "level": 8,
+            "doubleValue": 0.027
+          },
+          {
+            "level": 9,
+            "doubleValue": 0.028
+          },
+          {
+            "level": 20,
+            "doubleValue": 0.04
+          },
+          {
+            "level": 10,
+            "doubleValue": 0.029
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_PENETRATION_RESIST_VALUE",
+        "ability": "LIFESAVER_PENETRATION_RESIST",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_RANGE",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGRADIUS",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingRadius",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_RANGE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_REGENRATE",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "regenRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.25
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_DURATION",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 6.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_RADIUS",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "LASER_BLAST_CANNON_DEAL_DAMAGE_VALUE",
+        "ability": "LASER_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 17000.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CHARGE_SPEED_RELATIVE",
+        "ability": "BIFROST_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "MUTE_EMP_KIND",
+        "ability": "MUTE_EMP",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_PENETRATION_RESIST_VALUE",
+        "ability": "BIFROST_PENETRATION_RESIST",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_RADIUS",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "DEFENDER_SYSTEM_DURATION",
+        "ability": "DEFENDER_SYSTEM",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_MAXARMORSTACKCOUNT",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "maxArmorStackCount",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_DELAY",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_MERGEABLE",
+        "ability": "ROULETTE_RUST",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_VALUE",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 40000.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_VALUE",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 18120.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 18924.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 19728.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 20532.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 21336.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 22140.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 22944.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 23748.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 24552.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 10080.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 10884.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 11688.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 12492.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 13296.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 14100.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 14904.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 15708.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 16512.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 25200.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 17316.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_CHARGE_SPEED_STATTYPE",
+        "ability": "FREDERICK_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEEFFECTDURATION",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeEffectDuration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 6.5
+          },
+          {
+            "level": 12,
+            "doubleValue": 6.75
+          },
+          {
+            "level": 13,
+            "doubleValue": 7.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 7.25
+          },
+          {
+            "level": 15,
+            "doubleValue": 7.5
+          },
+          {
+            "level": 16,
+            "doubleValue": 8.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 8.25
+          },
+          {
+            "level": 18,
+            "doubleValue": 8.5
+          },
+          {
+            "level": 19,
+            "doubleValue": 8.75
+          },
+          {
+            "level": 1,
+            "doubleValue": 4.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 4.25
+          },
+          {
+            "level": 3,
+            "doubleValue": 4.5
+          },
+          {
+            "level": 4,
+            "doubleValue": 4.75
+          },
+          {
+            "level": 5,
+            "doubleValue": 5.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 5.25
+          },
+          {
+            "level": 7,
+            "doubleValue": 5.5
+          },
+          {
+            "level": 8,
+            "doubleValue": 5.75
+          },
+          {
+            "level": 9,
+            "doubleValue": 6.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 9.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 6.25
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_RANGE",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_RANGE",
+        "ability": "ROULETTE_RUST",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 600.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_KIND",
+        "ability": "ROULETTE_DOT",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "ROULETTE_DOT_MAXSTACK",
+        "ability": "ROULETTE_DOT",
+        "name": "maxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 75.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_VALUE",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 8310.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 8685.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 9060.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 9435.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 9810.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 10185.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 10560.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 10935.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 11310.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 4560.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 4935.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 5310.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 5685.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 6060.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 6435.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 6810.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 7185.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 7560.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 11685.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 7935.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_CHARGE_SPEED_RELATIVE",
+        "ability": "BEHOLDER_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "ORION_ADDITION_TITAN_DMG_SLOTKIND",
+        "ability": "ORION_ADDITION_TITAN_DMG",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_DAMAGE_TOTALDAMAGEBUFF",
+        "ability": "FREDERICK_WEAKENING_DAMAGE",
+        "name": "totalDamageBuff",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.44
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.48
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.68
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.73
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.78
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.07
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.1
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.13
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.16
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.2
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.24
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.28
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.36
+          },
+          {
+            "level": 20,
+            "doubleValue": 1.9
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.4
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_DURATION",
+        "ability": "ROULETTE_DOT",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 6.0
+          }
+        ]
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_KIND",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "REPAIR_BLAST_STATION_HEAL_VALUE",
+        "ability": "REPAIR_BLAST_STATION_HEAL",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 20300.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_VALUE",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1380.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_ACTIVATEHP",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "activateHp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10000.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_HP",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "hp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 12000.0
+          }
+        ]
+      },
+      {
+        "id": "MUTE_EMP_RANGE",
+        "ability": "MUTE_EMP",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_SUPPRESSIONIMMUNE",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "suppressionImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_MAXSTACK",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "maxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_EFFECTDURATION",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_DELAY",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_MERGEABLE",
+        "ability": "ROULETTE_DOT",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "MUTE_EMP_DURATION",
+        "ability": "MUTE_EMP",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 4.4
+          },
+          {
+            "level": 12,
+            "doubleValue": 4.7
+          },
+          {
+            "level": 13,
+            "doubleValue": 5.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 5.4
+          },
+          {
+            "level": 15,
+            "doubleValue": 5.7
+          },
+          {
+            "level": 16,
+            "doubleValue": 6.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 6.3
+          },
+          {
+            "level": 18,
+            "doubleValue": 6.5
+          },
+          {
+            "level": 19,
+            "doubleValue": 6.8
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.5
+          },
+          {
+            "level": 3,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 2.3
+          },
+          {
+            "level": 5,
+            "doubleValue": 2.7
+          },
+          {
+            "level": 6,
+            "doubleValue": 3.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 3.3
+          },
+          {
+            "level": 8,
+            "doubleValue": 3.6
+          },
+          {
+            "level": 9,
+            "doubleValue": 3.8
+          },
+          {
+            "level": 20,
+            "doubleValue": 7.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 4.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CLEANCEONCE_DELAY",
+        "ability": "BIFROST_CLEANCEONCE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_RANGE",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_PERIOD",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "period",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.5
+          }
+        ]
+      },
+      {
+        "id": "DAMAGE_ENFORCE_DELAY",
+        "ability": "DAMAGE_ENFORCE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_RANGE",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "SONIC_BOMB_RANGE",
+        "ability": "SONIC_BOMB",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_CHARGE_SPEED_STATTYPE",
+        "ability": "ORION_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_RADIUS",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_DOT_DURATION",
+        "ability": "FROZENSCORN_DOT",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 7.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_REFRESHPOSITIONTIMERATE",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "refreshPositionTimeRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DOT_VALUE",
+        "ability": "MONARCH_DOT",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 5291.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 5570.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 5864.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 6173.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 6498.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 6840.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 7201.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 7581.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 7980.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 3164.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 3331.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 3507.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 3692.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 3887.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 4092.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 4308.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 4535.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 4774.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 8400.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 5026.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_CHARGE_SPEED_RELATIVE",
+        "ability": "PALADIN_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_RANGE",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DEAL_DAMAGE_DELAY",
+        "ability": "MONARCH_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "DREADNOUGHT_DEAL_DAMAGE_DELAY",
+        "ability": "DREADNOUGHT_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "KEEL_ADDITION_TITAN_DMG_SLOTKIND",
+        "ability": "KEEL_ADDITION_TITAN_DMG",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CLEANCEONCE_KIND",
+        "ability": "BIFROST_CLEANCEONCE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "ROULETTE_RUST_RELATIVEHPRESTORE",
+        "ability": "ROULETTE_RUST",
+        "name": "relativeHpRestore",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.00667
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_RADIUS",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DOT_RANGE",
+        "ability": "MONARCH_DOT",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_SPEED_ VALUE",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_SPEED",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 9.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_DURATION",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "REPAIR_BLAST_STATION_HEAL_HEAL",
+        "ability": "REPAIR_BLAST_STATION_HEAL",
+        "name": "heal",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_CLEANSE_STACKCOUNT",
+        "ability": "AVALON_CLEANSE",
+        "name": "stackCount",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_PENETRATION_RESIST_KIND",
+        "ability": "LIFESAVER_PENETRATION_RESIST",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_VALUE",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 49210.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 51541.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 53872.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 56203.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 58534.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 60865.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 63196.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 65527.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 67690.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 25900.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 28231.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 30562.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 32893.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 35224.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 37555.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 39885.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 42217.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 44548.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 70000.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 46879.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_RANGE",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DOT_DELAY",
+        "ability": "MONARCH_DOT",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_SLOTKIND",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_RADIUS",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 190.0
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_RADIUS",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 30.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_DOT_KIND",
+        "ability": "FROZENSCORN_DOT",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "DREADNOUGHT_CHARGE_SPEED_STATTYPE",
+        "ability": "DREADNOUGHT_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "MONARCH_CHARGE_SPEED_STATTYPE",
+        "ability": "MONARCH_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTIMEFORSTRIKE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTimeForStrike",
+        "levels": []
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_HP",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "hp",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 205000.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 210000.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 215000.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 220000.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 225000.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 230000.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 235000.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 240000.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 245000.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 150000.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 160000.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 165000.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 170000.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 175000.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 180000.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 185000.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 190000.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 195000.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 250000.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 200000.0
+          }
+        ]
+      },
+      {
+        "id": "TARGET_RAY_CANNON_DEAL_DAMAGE_DELAY",
+        "ability": "TARGET_RAY_CANNON_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_CHARGE_SPEED_RELATIVE",
+        "ability": "NORTHLIGHT_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "AVALON_CHARGE_SPEED_STATTYPE",
+        "ability": "AVALON_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_DELAY",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_BEAMSTRIKEEFFECT",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "beamStrikeEffect",
+        "levels": []
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_AOEBLOCKENABLED",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "aoeBlockEnabled",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_MERGEABLE",
+        "ability": "THOR_SHOCKED",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_CHARGE_SPEED_RELATIVE",
+        "ability": "FROZENSCORN_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_SPEED_DELAY",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_SPEED",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_BURSTSTRIKEEFFECT",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "burstStrikeEffect",
+        "levels": []
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_EFFECTVALUE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "effectValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1000.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_KIND",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MONARCH_CHARGE_SPEED_RELATIVE",
+        "ability": "MONARCH_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_HEALRELATIVE",
+        "ability": "AVALON_HEAL",
+        "name": "healRelative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 0.105
+          },
+          {
+            "level": 12,
+            "doubleValue": 0.11
+          },
+          {
+            "level": 13,
+            "doubleValue": 0.115
+          },
+          {
+            "level": 14,
+            "doubleValue": 0.12
+          },
+          {
+            "level": 15,
+            "doubleValue": 0.125
+          },
+          {
+            "level": 16,
+            "doubleValue": 0.13
+          },
+          {
+            "level": 17,
+            "doubleValue": 0.135
+          },
+          {
+            "level": 18,
+            "doubleValue": 0.14
+          },
+          {
+            "level": 19,
+            "doubleValue": 0.145
+          },
+          {
+            "level": 1,
+            "doubleValue": 0.055
+          },
+          {
+            "level": 2,
+            "doubleValue": 0.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 0.065
+          },
+          {
+            "level": 4,
+            "doubleValue": 0.07
+          },
+          {
+            "level": 5,
+            "doubleValue": 0.075
+          },
+          {
+            "level": 6,
+            "doubleValue": 0.08
+          },
+          {
+            "level": 7,
+            "doubleValue": 0.085
+          },
+          {
+            "level": 8,
+            "doubleValue": 0.09
+          },
+          {
+            "level": 9,
+            "doubleValue": 0.095
+          },
+          {
+            "level": 20,
+            "doubleValue": 0.15
+          },
+          {
+            "level": 10,
+            "doubleValue": 0.1
+          }
+        ]
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_HP",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "hp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 150000.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_REFRESHPOSITIONTIMERATE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "refreshPositionTimeRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_KIND",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MONARCH_DOT_RADIUS",
+        "ability": "MONARCH_DOT",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_EFFECTDURATION",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_SLOTKIND",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_DURATION",
+        "ability": "ROULETTE_RUST",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 6.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_CHARGE_SPEED_STATTYPE",
+        "ability": "ROULETTE_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_SHIELDKIND",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "shieldKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTIMEFORMARK",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTimeForMark",
+        "levels": []
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_KIND",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "LIFESAVER_STEALTH_DELAY",
+        "ability": "LIFESAVER_STEALTH",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_EFFECTSTACKPOLICY",
+        "ability": "ROULETTE_DOT",
+        "name": "effectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_ACTIVATEHP",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "activateHp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2000.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_RANGE",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_KIND",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_ARMORDROPTIME",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "armorDropTime",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_KIND",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "SONIC_BOMB_HEALLIMITFACTOR",
+        "ability": "SONIC_BOMB",
+        "name": "healLimitFactor",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEDURATION",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 7.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_DURATION",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 600.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_CHARGE_SPEED_RELATIVE",
+        "ability": "ORION_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_VALUE",
+        "ability": "ROULETTE_RUST",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.00667
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_VALUE",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 10500.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 11000.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 11500.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 11900.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 12400.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 12900.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 13400.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 13800.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 14300.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 5800.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 6200.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 6700.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 7200.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 7700.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 8100.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 8600.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 9100.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 9600.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 14800.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 10000.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_RADIUS",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_DELAY",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_STEALTH_KIND",
+        "ability": "LIFESAVER_STEALTH",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_RANGE",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_CHARGE_SPEED_RELATIVE",
+        "ability": "AVALON_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DEAL_DAMAGE_RADIUS",
+        "ability": "MONARCH_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "SONIC_BOMB_VALUE",
+        "ability": "SONIC_BOMB",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50000.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_RADIUS",
+        "ability": "ROULETTE_RUST",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 100.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_DAMAGE_DROPEFFECTEVERYSECCOUNT",
+        "ability": "FREDERICK_WEAKENING_DAMAGE",
+        "name": "dropEffectEverySecCount",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_KIND",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "PALADIN_CHARGE_SPEED_STATTYPE",
+        "ability": "PALADIN_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_BURSTTIMEFORMARK",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "burstTimeForMark",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_PENETRATION_RESIST_MERGEABLE",
+        "ability": "BIFROST_PENETRATION_RESIST",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_DELAY",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_DELAY",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_VALUE",
+        "ability": "ROULETTE_DOT",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_CHARGEACCUMULATION",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "chargeAccumulation",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 172.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 179.5
+          },
+          {
+            "level": 13,
+            "doubleValue": 187.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 194.5
+          },
+          {
+            "level": 15,
+            "doubleValue": 202.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 209.5
+          },
+          {
+            "level": 17,
+            "doubleValue": 217.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 224.5
+          },
+          {
+            "level": 19,
+            "doubleValue": 232.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 97.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 104.5
+          },
+          {
+            "level": 3,
+            "doubleValue": 112.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 119.5
+          },
+          {
+            "level": 5,
+            "doubleValue": 127.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 134.5
+          },
+          {
+            "level": 7,
+            "doubleValue": 142.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 149.5
+          },
+          {
+            "level": 9,
+            "doubleValue": 157.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 242.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 164.5
+          }
+        ]
+      },
+      {
+        "id": "MUTE_BLIND_RANGE",
+        "ability": "MUTE_BLIND",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_EFFECTDURATION",
+        "ability": "AVALON_HEAL",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_WEAKENING_ARMOR_MAXARMORPLATEAUTIME",
+        "ability": "BIFROST_WEAKENING_ARMOR",
+        "name": "maxArmorPlateauTime",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 2.1
+          },
+          {
+            "level": 12,
+            "doubleValue": 2.2
+          },
+          {
+            "level": 13,
+            "doubleValue": 2.3
+          },
+          {
+            "level": 14,
+            "doubleValue": 2.4
+          },
+          {
+            "level": 15,
+            "doubleValue": 2.5
+          },
+          {
+            "level": 16,
+            "doubleValue": 2.6
+          },
+          {
+            "level": 17,
+            "doubleValue": 2.7
+          },
+          {
+            "level": 18,
+            "doubleValue": 2.8
+          },
+          {
+            "level": 19,
+            "doubleValue": 2.9
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.1
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.2
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.3
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.4
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.5
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.6
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.7
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.9
+          },
+          {
+            "level": 20,
+            "doubleValue": 3.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "DEFENDER_SYSTEM_DELAY",
+        "ability": "DEFENDER_SYSTEM",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_PERUPDATEMOVEDISTANCESIZE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "perUpdateMoveDistanceSize",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 45.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_DURATION",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_DELAY",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "DREADNOUGHT_DEAL_DAMAGE_RANGE",
+        "ability": "DREADNOUGHT_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_DURATION",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_SLOTKIND",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_RANGE",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_PERIOD",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "period",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.5
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_HP",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "hp",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 62000.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 64000.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 66000.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 68000.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 70000.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 72000.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 74000.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 76000.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 78000.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 42000.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 44000.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 46000.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 48000.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 50000.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 52000.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 54000.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 56000.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 58000.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 80000.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 60000.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_MAXSTACK",
+        "ability": "ROULETTE_RUST",
+        "name": "maxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 75.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_DELAY",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_RADIUS",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_RADIUS",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_VALUE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2000.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_APPLYEFFECTSTIMERATE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "applyEffectsTimeRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.5
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_TOTALSPEEDBUFF",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "totalSpeedBuff",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.55
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.6
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.65
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.7
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.75
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.8
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.85
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.9
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.05
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.1
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.15
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.2
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.25
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.3
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.35
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.4
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.45
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.5
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_RADIUS",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_MERGEABLE",
+        "ability": "AVALON_HEAL",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "MANTIS_CHARGE_SPEED_STATTYPE",
+        "ability": "MANTIS_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_DELAY",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_DELAY",
+        "ability": "THOR_SHOCKED",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_KIND",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MUTE_BLIND_RADIUS",
+        "ability": "MUTE_BLIND",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 90.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_DELAY",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_CHARGE_SPEED_STATTYPE",
+        "ability": "BEHOLDER_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_DOT_DELAY",
+        "ability": "FROZENSCORN_DOT",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_DURATION",
+        "ability": "THOR_SHOCKED",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 6.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_KIND",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "PERIODIC_FIX_STATION_BUFF_HEALABSOLUTE",
+        "ability": "PERIODIC_FIX_STATION_BUFF",
+        "name": "healRelative",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.01
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_EFFECTSTACKPOLICY",
+        "ability": "ROULETTE_RUST",
+        "name": "effectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "THOR_SHOCKED_MAXSTACK",
+        "ability": "THOR_SHOCKED",
+        "name": "maxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_PENETRATION_RESIST_DELAY",
+        "ability": "LIFESAVER_PENETRATION_RESIST",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_RADIUS",
+        "ability": "THOR_SHOCKED",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_DURATION",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_DURATION",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_HEALLIMITRELATIVE",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "healLimitRelative",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.15
+          }
+        ]
+      },
+      {
+        "id": "MUTE_BLIND_DURATION",
+        "ability": "MUTE_BLIND",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 4.4
+          },
+          {
+            "level": 12,
+            "doubleValue": 4.7
+          },
+          {
+            "level": 13,
+            "doubleValue": 5.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 5.4
+          },
+          {
+            "level": 15,
+            "doubleValue": 5.7
+          },
+          {
+            "level": 16,
+            "doubleValue": 6.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 6.3
+          },
+          {
+            "level": 18,
+            "doubleValue": 6.5
+          },
+          {
+            "level": 19,
+            "doubleValue": 6.8
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.5
+          },
+          {
+            "level": 3,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 2.3
+          },
+          {
+            "level": 5,
+            "doubleValue": 2.7
+          },
+          {
+            "level": 6,
+            "doubleValue": 3.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 3.3
+          },
+          {
+            "level": 8,
+            "doubleValue": 3.6
+          },
+          {
+            "level": 9,
+            "doubleValue": 3.8
+          },
+          {
+            "level": 20,
+            "doubleValue": 7.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 4.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_DELAY",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_HEALABSOLUTE",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "healAbsolute",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 90600.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 94500.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 98400.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 102300.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 106200.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 110100.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 114000.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 117900.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 121800.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 51600.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 55500.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 59400.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 63300.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 67200.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 71100.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 75000.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 78900.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 82800.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 125700.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 86700.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_DURATION",
+        "ability": "AVALON_HEAL",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "KEEL_CHARGE_SPEED_RELATIVE",
+        "ability": "KEEL_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_DELAY",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_PENETRATION_RESIST_MERGEABLE",
+        "ability": "LIFESAVER_PENETRATION_RESIST",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKERADIUS",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeRadius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_KIND",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "AVALON_HEAL_HEALLIMITRELATIVE",
+        "ability": "AVALON_HEAL",
+        "name": "healLimitRelative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 0.043
+          },
+          {
+            "level": 12,
+            "doubleValue": 0.046
+          },
+          {
+            "level": 13,
+            "doubleValue": 0.049
+          },
+          {
+            "level": 14,
+            "doubleValue": 0.052
+          },
+          {
+            "level": 15,
+            "doubleValue": 0.055
+          },
+          {
+            "level": 16,
+            "doubleValue": 0.058
+          },
+          {
+            "level": 17,
+            "doubleValue": 0.061
+          },
+          {
+            "level": 18,
+            "doubleValue": 0.064
+          },
+          {
+            "level": 19,
+            "doubleValue": 0.067
+          },
+          {
+            "level": 1,
+            "doubleValue": 0.013
+          },
+          {
+            "level": 2,
+            "doubleValue": 0.016
+          },
+          {
+            "level": 3,
+            "doubleValue": 0.019
+          },
+          {
+            "level": 4,
+            "doubleValue": 0.022
+          },
+          {
+            "level": 5,
+            "doubleValue": 0.025
+          },
+          {
+            "level": 6,
+            "doubleValue": 0.028
+          },
+          {
+            "level": 7,
+            "doubleValue": 0.031
+          },
+          {
+            "level": 8,
+            "doubleValue": 0.034
+          },
+          {
+            "level": 9,
+            "doubleValue": 0.037
+          },
+          {
+            "level": 20,
+            "doubleValue": 0.07
+          },
+          {
+            "level": 10,
+            "doubleValue": 0.04
+          }
+        ]
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_MECHABSOLUTE",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "mechAbsolute",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 25000.0
+          }
+        ]
+      },
+      {
+        "id": "DAMAGE_ENFORCE_KIND",
+        "ability": "DAMAGE_ENFORCE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_KIND",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MUTE_CHARGE_SPEED_STATTYPE",
+        "ability": "MUTE_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_SLOTKIND",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "slotKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "ENHANCED_AEGIS_SHIELD_KIND",
+        "ability": "ENHANCED_AEGIS_SHIELD",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "FREDERICK_CHARGE_SPEED_RELATIVE",
+        "ability": "FREDERICK_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "KEEL_ADDITION_TITAN_DMG_RELATIVE",
+        "ability": "KEEL_ADDITION_TITAN_DMG",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 2.5
+          },
+          {
+            "level": 12,
+            "doubleValue": 2.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 2.66
+          },
+          {
+            "level": 14,
+            "doubleValue": 2.74
+          },
+          {
+            "level": 15,
+            "doubleValue": 2.82
+          },
+          {
+            "level": 16,
+            "doubleValue": 2.9
+          },
+          {
+            "level": 17,
+            "doubleValue": 2.98
+          },
+          {
+            "level": 18,
+            "doubleValue": 3.06
+          },
+          {
+            "level": 19,
+            "doubleValue": 3.14
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.7
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.78
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.86
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.94
+          },
+          {
+            "level": 5,
+            "doubleValue": 2.02
+          },
+          {
+            "level": 6,
+            "doubleValue": 2.1
+          },
+          {
+            "level": 7,
+            "doubleValue": 2.18
+          },
+          {
+            "level": 8,
+            "doubleValue": 2.26
+          },
+          {
+            "level": 9,
+            "doubleValue": 2.34
+          },
+          {
+            "level": 20,
+            "doubleValue": 3.2
+          },
+          {
+            "level": 10,
+            "doubleValue": 2.42
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_CHARGE_SPEED_STATTYPE",
+        "ability": "FROZENSCORN_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_SHIELDKIND",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "shieldKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_DELAY",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_DELAY",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_DELAY",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "ORION_ADDITION_TITAN_DMG_RELATIVE",
+        "ability": "ORION_ADDITION_TITAN_DMG",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 2.2
+          },
+          {
+            "level": 12,
+            "doubleValue": 2.26
+          },
+          {
+            "level": 13,
+            "doubleValue": 2.32
+          },
+          {
+            "level": 14,
+            "doubleValue": 2.38
+          },
+          {
+            "level": 15,
+            "doubleValue": 2.44
+          },
+          {
+            "level": 16,
+            "doubleValue": 2.5
+          },
+          {
+            "level": 17,
+            "doubleValue": 2.56
+          },
+          {
+            "level": 18,
+            "doubleValue": 2.62
+          },
+          {
+            "level": 19,
+            "doubleValue": 2.68
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.6
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.66
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.72
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.78
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.9
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.96
+          },
+          {
+            "level": 8,
+            "doubleValue": 2.02
+          },
+          {
+            "level": 9,
+            "doubleValue": 2.08
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.74
+          },
+          {
+            "level": 10,
+            "doubleValue": 2.14
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_BURSTRADIUS",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "burstRadius",
+        "levels": []
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_SLOWDOWNIMMUNE",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "slowdownImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_KIND",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "LASER_BLAST_CANNON_DEAL_DAMAGE_DELAY",
+        "ability": "LASER_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_TITANABSOLUTE",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "titanAbsolute",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50000.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_RESIST_BUFF_RADIUS",
+        "ability": "NORTHLIGHT_RESIST_BUFF",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_RADIUS",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEMAXSTACK",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeMaxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_ACTIVATEHP",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "activateHp",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2000.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_KIND",
+        "ability": "THOR_SHOCKED",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "TARGET_RAY_CANNON_DEAL_DAMAGE_RADIUS",
+        "ability": "TARGET_RAY_CANNON_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "DREADNOUGHT_DEAL_DAMAGE_RADIUS",
+        "ability": "DREADNOUGHT_DEAL_DAMAGE",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_RANGE",
+        "ability": "ROULETTE_DOT",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 600.0
+          }
+        ]
+      },
+      {
+        "id": "AVALON_HEAL_KIND",
+        "ability": "AVALON_HEAL",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEMERGEABLE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeMergeable",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_DOT_RADIUS",
+        "ability": "FROZENSCORN_DOT",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 190.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_MERGEABLE",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_RADIUS",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_RANGE",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_CHARGE_SPEED_STATTYPE",
+        "ability": "THOR_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "ROULETTE_CHARGE_SPEED_RELATIVE",
+        "ability": "ROULETTE_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_RANGE",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "DREADNOUGHT_DEAL_DAMAGE_VALUE",
+        "ability": "DREADNOUGHT_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 29231.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 30615.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 32000.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 33385.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 34769.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 36154.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 37538.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 38923.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 40308.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 15385.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 16769.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 18154.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 19538.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 20923.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 22308.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 23692.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 25077.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 26462.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 41692.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 27846.0
+          }
+        ]
+      },
+      {
+        "id": "DAMAGE_ENFORCE_VALUE",
+        "ability": "DAMAGE_ENFORCE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.5
+          }
+        ]
+      },
+      {
+        "id": "MUTE_BLIND_DELAY",
+        "ability": "MUTE_BLIND",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_PENETRATION_RESIST_DELAY",
+        "ability": "BIFROST_PENETRATION_RESIST",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_RANGE",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 800.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_EFFECTVALUE",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "effectValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": -0.01
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CLEANCEONCE_STACKCOUNT",
+        "ability": "BIFROST_CLEANCEONCE",
+        "name": "stackCount",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_REGENRATE",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "regenRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_DURATION",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 12.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_HITCHARGECOEFFICIENT",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "hitChargeCoefficient",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CLEANCEONCE_MERGEABLE",
+        "ability": "BIFROST_CLEANCEONCE",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_DELAY",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEENABLE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeEnable",
+        "levels": []
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_AEGISLIFE",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "aegisLife",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 20.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_EFFECTDURATION",
+        "ability": "ROULETTE_DOT",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DOT_KIND",
+        "ability": "MONARCH_DOT",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "NORTHLIGHT_CHARGE_SPEED_STATTYPE",
+        "ability": "NORTHLIGHT_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_MAXSTACK",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "maxStack",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_DELAY",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_SPEED_DURATION",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_SPEED",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_SHIELDKIND",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "shieldKind",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DEAL_DAMAGE_RANGE",
+        "ability": "MONARCH_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_RADIUS",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGSTRIKECOUNT",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingStrikeCount",
+        "levels": []
+      },
+      {
+        "id": "ORION_DEAL_DAMAGE_DURATION",
+        "ability": "ORION_DEAL_DAMAGE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_DELAY",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEVALUE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3000.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_STEALTH_DURATION",
+        "ability": "LIFESAVER_STEALTH",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_DELAY",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_DOT_DELAY",
+        "ability": "ROULETTE_DOT",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.5
+          }
+        ]
+      },
+      {
+        "id": "DEFENDER_SYSTEM_VALUE",
+        "ability": "DEFENDER_SYSTEM",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 100.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_REGENRATE",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "regenRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.0
+          }
+        ]
+      },
+      {
+        "id": "REPAIR_BLAST_STATION_HEAL_RANGE",
+        "ability": "REPAIR_BLAST_STATION_HEAL",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKESTACKSCOUNTPERAPPLY",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeStacksCountPerApply",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "HUNTER_DEAL_DAMAGE_BURSTTIMEFORSTRIKE",
+        "ability": "HUNTER_DEAL_DAMAGE",
+        "name": "burstTimeForStrike",
+        "levels": []
+      },
+      {
+        "id": "DURABILITY_EXTENDER_HP_KIND",
+        "ability": "DURABILITY_EXTENDER_HP",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "SONIC_BOMB_RADIUS",
+        "ability": "SONIC_BOMB",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 60.0
+          }
+        ]
+      },
+      {
+        "id": "DREADNOUGHT_CHARGE_SPEED_RELATIVE",
+        "ability": "DREADNOUGHT_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "TARGET_RAY_CANNON_DEAL_DAMAGE_RANGE",
+        "ability": "TARGET_RAY_CANNON_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 800.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CHARGE_SPEED_STATTYPE",
+        "ability": "SEKHEM_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "FREDERICK_WEAKENING_DAMAGE_KIND",
+        "ability": "FREDERICK_WEAKENING_DAMAGE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "MANTIS_BLAST_AEGIS_RADIUS",
+        "ability": "MANTIS_BLAST_AEGIS",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_RANGE",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_KIND",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "DAMAGE_ENFORCE_DURATION",
+        "ability": "DAMAGE_ENFORCE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "REPAIR_BLAST_STATION_HEAL_DELAY",
+        "ability": "REPAIR_BLAST_STATION_HEAL",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_RANGE",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_DURATION",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 20.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_EFFECTDURATION",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_CHARGE_SPEED_STATTYPE",
+        "ability": "BIFROST_CHARGE_SPEED",
+        "name": "statType",
+        "levels": []
+      },
+      {
+        "id": "SEKHEM_CHARGE_SPEED_RELATIVE",
+        "ability": "SEKHEM_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "THOR_DEAL_DAMAGE_DELAY",
+        "ability": "THOR_DEAL_DAMAGE",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 2.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_FREEZEIMMUNE",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "freezeImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_MERGEABLE",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "MUTE_BLIND_MERGEABLE",
+        "ability": "MUTE_BLIND",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "DEFENDER_SYSTEM_KIND",
+        "ability": "DEFENDER_SYSTEM",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "BEHOLDER_AOE_BLAST_EFFECTDURATION",
+        "ability": "BEHOLDER_AOE_BLAST",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.5
+          }
+        ]
+      },
+      {
+        "id": "ROULETTE_RUST_DELAY",
+        "ability": "ROULETTE_RUST",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.5
+          }
+        ]
+      },
+      {
+        "id": "BEHOLDER_BEAM_DAMAGE_PERUPDATEMOVEDISTANCESIZE",
+        "ability": "BEHOLDER_BEAM_DAMAGE",
+        "name": "perUpdateMoveDistanceSize",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 45.0
+          }
+        ]
+      },
+      {
+        "id": "LASER_BLAST_CANNON_DEAL_DAMAGE_RANGE",
+        "ability": "LASER_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_CHARGE_SPEED_RELATIVE",
+        "ability": "THOR_CHARGE_SPEED",
+        "name": "relative",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 1.53
+          },
+          {
+            "level": 12,
+            "doubleValue": 1.58
+          },
+          {
+            "level": 13,
+            "doubleValue": 1.63
+          },
+          {
+            "level": 14,
+            "doubleValue": 1.69
+          },
+          {
+            "level": 15,
+            "doubleValue": 1.74
+          },
+          {
+            "level": 16,
+            "doubleValue": 1.79
+          },
+          {
+            "level": 17,
+            "doubleValue": 1.84
+          },
+          {
+            "level": 18,
+            "doubleValue": 1.89
+          },
+          {
+            "level": 19,
+            "doubleValue": 1.95
+          },
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 1.06
+          },
+          {
+            "level": 3,
+            "doubleValue": 1.11
+          },
+          {
+            "level": 4,
+            "doubleValue": 1.17
+          },
+          {
+            "level": 5,
+            "doubleValue": 1.22
+          },
+          {
+            "level": 6,
+            "doubleValue": 1.27
+          },
+          {
+            "level": 7,
+            "doubleValue": 1.32
+          },
+          {
+            "level": 8,
+            "doubleValue": 1.37
+          },
+          {
+            "level": 9,
+            "doubleValue": 1.43
+          },
+          {
+            "level": 20,
+            "doubleValue": 2.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 1.48
+          }
+        ]
+      },
+      {
+        "id": "AVALON_CLEANSE_KIND",
+        "ability": "AVALON_CLEANSE",
+        "name": "kind",
+        "levels": []
+      },
+      {
+        "id": "ROULETTE_RUST_RELATIVEHEALREDUCE",
+        "ability": "ROULETTE_RUST",
+        "name": "relativeHealReduce",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.00667
+          }
+        ]
+      },
+      {
+        "id": "MUTE_EMP_MERGEABLE",
+        "ability": "MUTE_EMP",
+        "name": "mergeable",
+        "levels": []
+      },
+      {
+        "id": "TARGET_RAY_CANNON_DEAL_DAMAGE_VALUE",
+        "ability": "TARGET_RAY_CANNON_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10423.0
+          }
+        ]
+      },
+      {
+        "id": "ANTI_JAMMING_IMMUNES_EMPIMMUNE",
+        "ability": "ANTI_JAMMING_IMMUNES",
+        "name": "eMPImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_EFFECTVALUE",
+        "ability": "THOR_SHOCKED",
+        "name": "effectValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGSTRIKEEFFECT",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingStrikeEffect",
+        "levels": []
+      },
+      {
+        "id": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE_RANGE",
+        "ability": "LOCK_DOWN_BLAST_CANNON_DEAL_DAMAGE",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEEFFECTSTACKPOLICY",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeEffectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "ROULETTE_DOT_EFFECTVALUE",
+        "ability": "ROULETTE_DOT",
+        "name": "effectValue",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 650.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 700.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 750.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 800.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 850.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 900.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 950.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 1000.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 1050.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 150.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 200.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 250.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 300.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 350.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 400.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 450.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 500.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 550.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 1100.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 600.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_DURATION",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "MUTE_EMP_RADIUS",
+        "ability": "MUTE_EMP",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 90.0
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DOT_DURATION",
+        "ability": "MONARCH_DOT",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "BIFROST_PENETRATION_RESIST_DURATION",
+        "ability": "BIFROST_PENETRATION_RESIST",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_RANGE",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_EFFECTSTACKPOLICY",
+        "ability": "THOR_SHOCKED",
+        "name": "effectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_DURATION",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 5.0
+          }
+        ]
+      },
+      {
+        "id": "MUTE_EMP_DELAY",
+        "ability": "MUTE_EMP",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "THOR_SHOCKED_EFFECTDURATION",
+        "ability": "THOR_SHOCKED",
+        "name": "effectDuration",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 5.5
+          },
+          {
+            "level": 12,
+            "doubleValue": 5.75
+          },
+          {
+            "level": 13,
+            "doubleValue": 6.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 6.25
+          },
+          {
+            "level": 15,
+            "doubleValue": 6.5
+          },
+          {
+            "level": 16,
+            "doubleValue": 6.75
+          },
+          {
+            "level": 17,
+            "doubleValue": 7.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 7.25
+          },
+          {
+            "level": 19,
+            "doubleValue": 7.5
+          },
+          {
+            "level": 1,
+            "doubleValue": 3.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 3.25
+          },
+          {
+            "level": 3,
+            "doubleValue": 3.5
+          },
+          {
+            "level": 4,
+            "doubleValue": 3.75
+          },
+          {
+            "level": 5,
+            "doubleValue": 4.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 4.25
+          },
+          {
+            "level": 7,
+            "doubleValue": 4.5
+          },
+          {
+            "level": 8,
+            "doubleValue": 4.75
+          },
+          {
+            "level": 9,
+            "doubleValue": 5.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 8.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 5.25
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_DAMAGE_DURATION",
+        "ability": "FREDERICK_WEAKENING_DAMAGE",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 10.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_DURATION",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 20.0
+          }
+        ]
+      },
+      {
+        "id": "SEKHEM_CARPET_DAMAGE_CARPETBOMBINGTEMPORALSUBSTRIKEEFFECTVALUE",
+        "ability": "SEKHEM_CARPET_DAMAGE",
+        "name": "carpetBombingTemporalSubStrikeEffectValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": -0.01
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_VALUE",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_SELF_SYSTEM_SHIELD_RANGE",
+        "ability": "AEGIS_SELF_SYSTEM_SHIELD",
+        "name": "range",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1100.0
+          }
+        ]
+      },
+      {
+        "id": "FREDERICK_WEAKENING_SPEED_DROPEFFECTEVERYSECCOUNT",
+        "ability": "FREDERICK_WEAKENING_SPEED",
+        "name": "dropEffectEverySecCount",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "LIFESAVER_PENETRATION_RESIST_DURATION",
+        "ability": "LIFESAVER_PENETRATION_RESIST",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "SONIC_BOMB_DELAY",
+        "ability": "SONIC_BOMB",
+        "name": "delay",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 1.0
+          }
+        ]
+      },
+      {
+        "id": "AEGIS_BLAST_SYSTEM_SHIELD_REGENRATE",
+        "ability": "AEGIS_BLAST_SYSTEM_SHIELD",
+        "name": "regenRate",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 0.0
+          }
+        ]
+      },
+      {
+        "id": "NORTHLIGHT_HEAL_RADIUS",
+        "ability": "NORTHLIGHT_HEAL",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 80.0
+          }
+        ]
+      },
+      {
+        "id": "MANTIS_BLAST_HEAL_RADIUS",
+        "ability": "MANTIS_BLAST_HEAL",
+        "name": "radius",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 50.0
+          }
+        ]
+      },
+      {
+        "id": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES_ROOTIMMUNE",
+        "ability": "POSITIVE_ENERGY_RECUPERATOR_IMMUNES",
+        "name": "rootImmune",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 15.0
+          }
+        ]
+      },
+      {
+        "id": "FROZENSCORN_FREEZE_EFFECTSTACKPOLICY",
+        "ability": "FROZENSCORN_FREEZE",
+        "name": "effectStackPolicy",
+        "levels": []
+      },
+      {
+        "id": "PALADIN_RESTORATION_SHIELD_DURATION",
+        "ability": "PALADIN_RESTORATION_SHIELD",
+        "name": "duration",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": 8.0
+          }
+        ]
+      },
+      {
+        "id": "GRAVITY_ANOMALY_ZONE_EFFECTVALUE",
+        "ability": "GRAVITY_ANOMALY_ZONE",
+        "name": "effectValue",
+        "levels": [
+          {
+            "level": 1,
+            "doubleValue": -0.01
+          }
+        ]
+      },
+      {
+        "id": "MONARCH_DEAL_DAMAGE_VALUE",
+        "ability": "MONARCH_DEAL_DAMAGE",
+        "name": "value",
+        "levels": [
+          {
+            "level": 11,
+            "doubleValue": 51446.0
+          },
+          {
+            "level": 12,
+            "doubleValue": 53883.0
+          },
+          {
+            "level": 13,
+            "doubleValue": 56320.0
+          },
+          {
+            "level": 14,
+            "doubleValue": 58757.0
+          },
+          {
+            "level": 15,
+            "doubleValue": 61194.0
+          },
+          {
+            "level": 16,
+            "doubleValue": 63631.0
+          },
+          {
+            "level": 17,
+            "doubleValue": 66068.0
+          },
+          {
+            "level": 18,
+            "doubleValue": 68505.0
+          },
+          {
+            "level": 19,
+            "doubleValue": 70942.0
+          },
+          {
+            "level": 1,
+            "doubleValue": 27077.0
+          },
+          {
+            "level": 2,
+            "doubleValue": 29514.0
+          },
+          {
+            "level": 3,
+            "doubleValue": 31951.0
+          },
+          {
+            "level": 4,
+            "doubleValue": 34388.0
+          },
+          {
+            "level": 5,
+            "doubleValue": 36825.0
+          },
+          {
+            "level": 6,
+            "doubleValue": 39262.0
+          },
+          {
+            "level": 7,
+            "doubleValue": 41698.0
+          },
+          {
+            "level": 8,
+            "doubleValue": 44135.0
+          },
+          {
+            "level": 9,
+            "doubleValue": 46572.0
+          },
+          {
+            "level": 20,
+            "doubleValue": 73378.0
+          },
+          {
+            "level": 10,
+            "doubleValue": 49009.0
+          }
+        ]
+      }
+    ]
+  }
+}

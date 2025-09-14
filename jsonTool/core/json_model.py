@@ -159,7 +159,7 @@ class JsonModel(QAbstractItemModel):
     @staticmethod
     def _type_color(value_type) -> QColor:
         if value_type in (dict, list):
-            return QColor(96, 96, 96)
+            return QColor(150, 150, 150)
         if value_type is str:
             return QColor(163, 21, 21)
         if value_type in (int, float):
