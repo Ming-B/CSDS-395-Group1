@@ -9,8 +9,10 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Slot, QModelIndex, Qt
 
-from core.json_model import JsonModel
-from core.document import JSONDocument
+from jsonTool.core.json_model import JsonModel
+from jsonTool.core.document import JSONDocument
+
+from jsonTool.core.recent_files import RecentFilesManager
 
 
 class ViewerTab(QWidget):
@@ -39,14 +41,9 @@ class ViewerTab(QWidget):
         self._config_dir = self._root_dir / "config"
         self._config_dir.mkdir(parents=True, exist_ok=True)
         self._config_file = self._config_dir / "user.json"
-        self._config = self._load_user_config()
 
-        # recent_files 初始化（字符串绝对路径列表）
-        rf = self._config.get("recent_files")
-        if not isinstance(rf, list):
-            rf = []
-        self._recent_files: list[str] = [p for p in rf if isinstance(p, str)]
-        self._config["recent_files"] = self._recent_files  # 只保持内存一致，稍后统一落盘
+        # Unified recent file manager (sharing the same user.json with Editor)
+        self.recent_mgr = RecentFilesManager(str(self._config_file))
 
         # Reader states
         self._double_mode: bool = False
@@ -264,6 +261,11 @@ class ViewerTab(QWidget):
         cv = self.right_sidebar["content_v"]
         cv.insertWidget(cv.count() - 1, row)
 
+
+    def _remove_recent_and_refresh(self, abs_path: str):
+        self.recent_mgr.remove_file(abs_path)
+        self._refresh_recent_sidebar()
+
     def _refresh_recent_sidebar(self):
         # 清空现有行（保留最后的 stretch）
         cv = self.right_sidebar["content_v"]
@@ -274,7 +276,7 @@ class ViewerTab(QWidget):
                 w.setParent(None)
 
         # 重建
-        for p in self._recent_files:
+        for p in self.recent_mgr.get_files():
             self._right_add_item(p)
 
         # 同步两个阅读器的 ▼ 菜单
@@ -286,11 +288,12 @@ class ViewerTab(QWidget):
         btn = reader_block["menu_btn"]
         menu = QMenu(btn)
 
-        if not self._recent_files:
+        files = self.recent_mgr.get_files()
+        if not files:
             a = menu.addAction("(no recent files)")
             a.setEnabled(False)
         else:
-            for abs_path in self._recent_files:
+            for abs_path in files:
                 name = Path(abs_path).name
                 act = menu.addAction(name)
                 act.setToolTip(abs_path)
@@ -298,31 +301,6 @@ class ViewerTab(QWidget):
 
         btn.setMenu(menu)
 
-    # ------------------------ Recent files helpers ------------------------
-    def _maybe_add_recent_file(self, path: str, *, persist: bool = True, refresh: bool = True):
-        """将路径加入 recent_files（放到最前，去重，限制长度），并可选持久化与刷新 UI。"""
-        try:
-            p = Path(path).resolve()
-        except Exception:
-            return
-        if not p.exists():
-            return
-        sp = str(p)
-        if self._recent_files and self._recent_files[0] == sp:
-            # 已经是置顶，无需刷新
-            return
-        new_list = [sp] + [x for x in self._recent_files if x != sp]
-        # 可根据需要限制长度，例如 50
-        self._recent_files = new_list[:50]
-        if persist:
-            self._save_user_config()
-        if refresh:
-            self._refresh_recent_sidebar()
-
-    def _remove_recent_file(self, abs_path: str):
-        self._recent_files = [p for p in self._recent_files if p != abs_path]
-        self._save_user_config()
-        self._refresh_recent_sidebar()
 
     # ---------------------- Double / Single toggle ----------------------
     def _toggle_double_mode(self):
@@ -352,7 +330,8 @@ class ViewerTab(QWidget):
         # 1) recent_files 自动记录（无论是否锁定左阅读器，都应记录打开的文件）
         fp = getattr(self.document, "file_path", None)
         if fp:
-            self._maybe_add_recent_file(fp, persist=True, refresh=True)
+            self.recent_mgr.add_file(fp)
+            self._refresh_recent_sidebar()
 
         # 2) 左阅读器视图跟随（未锁定时）
         if not self._pane1_locked_to_file:
@@ -373,7 +352,8 @@ class ViewerTab(QWidget):
             self._busy(False)
 
         # 加入 recent_files（即使本来就有，也确保置顶并刷新菜单/右栏）
-        self._maybe_add_recent_file(abs_path, persist=True, refresh=True)
+        self.recent_mgr.add_file(abs_path)
+        self._refresh_recent_sidebar()
 
         if which == 1:
             self._pane1_locked_to_file = True
@@ -389,30 +369,6 @@ class ViewerTab(QWidget):
         fp = getattr(self.document, "file_path", None)
         reader_block["title"].setText(Path(fp).name if fp else default_label)
 
-    # ------------------------ Config (user.json) ------------------------
-    def _load_user_config(self) -> dict:
-        try:
-            if self._config_file.exists():
-                return json.loads(self._config_file.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-        return {}
-
-    def _save_user_config(self):
-        """Normalize and persist recent_files."""
-        # 去重、过滤不存在的
-        cleaned = []
-        seen = set()
-        for p in self._recent_files:
-            if p and isinstance(p, str) and p not in seen and Path(p).exists():
-                cleaned.append(p)
-                seen.add(p)
-        self._recent_files = cleaned
-        self._config["recent_files"] = self._recent_files
-        try:
-            self._config_file.write_text(json.dumps(self._config, indent=2, ensure_ascii=False), encoding="utf-8")
-        except Exception:
-            pass  # 非关键错误，忽略
 
     # ---------------- Snapshot-facing API (LEFT reader only) ----------------
     def capture_view_state(self) -> dict:

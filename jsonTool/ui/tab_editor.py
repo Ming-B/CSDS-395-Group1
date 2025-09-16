@@ -1,14 +1,17 @@
 # ui/tab_editor.py
 from __future__ import annotations
 
+from pathlib import Path
+
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTreeView, QHeaderView, QPushButton,
-    QMessageBox, QApplication, QAbstractItemView
+    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu
 )
 from PySide6.QtCore import Slot, QModelIndex
 
-from core.json_model import JsonModel
-from core.document import JSONDocument
+from jsonTool.core.json_model import JsonModel
+from jsonTool.core.document import JSONDocument
+from jsonTool.core.recent_files import RecentFilesManager
 
 
 class EditorTab(QWidget):
@@ -19,6 +22,10 @@ class EditorTab(QWidget):
 
         self.document = document
         self._set_busy_cb = None
+
+        # ---- 使用 RecentFilesManager（和 Viewer 共用一份 recent list）----
+        self.recent_mgr = RecentFilesManager("config/user.json")
+        self._current_file: str | None = None  # 仅用于标题显示
 
         # ---- Layout ----
         root_layout = QVBoxLayout(self)
@@ -41,6 +48,18 @@ class EditorTab(QWidget):
         toolbar.addStretch(1)
         root_layout.addLayout(toolbar)
 
+        # —— 文件选择行：左侧显示当前文件名，右侧 ▼ 下拉 —— #
+        file_row = QHBoxLayout()
+        self.title_btn = QPushButton("(No file)", self)
+        self.title_btn.setEnabled(False)  # 只用来显示名称
+        self.menu_btn = QToolButton(self)
+        self.menu_btn.setText("▼")
+        self.menu_btn.setFixedWidth(28)
+        self.menu_btn.setToolTip("Choose a file to edit")
+        self.menu_btn.setPopupMode(QToolButton.InstantPopup)  # 点击即弹出
+        file_row.addWidget(self.title_btn, 1)
+        file_row.addWidget(self.menu_btn, 0)
+        root_layout.addLayout(file_row)
 
         self.tree_view = QTreeView(self)
         root_layout.addWidget(self.tree_view)
@@ -78,11 +97,23 @@ class EditorTab(QWidget):
         self.btn_collapse_sel.clicked.connect(self._on_collapse_selection)
 
         # Bind document
+        # 绑定文档：首次载入 + 监听变化
         if self.document is not None:
             if self.document.get_data() is not None:
                 self.model.load(self.document.get_data())
-                # no forced expand here; let state restoration handle it
+                self._update_title_from_document()
+                if getattr(self.document, "file_path", None):
+                    self.recent_mgr.add_file(self.document.file_path)
             self.document.dataChanged.connect(self.on_document_changed)
+
+        # 连接按钮
+        self.btn_expand_all.clicked.connect(self._on_expand_all)
+        self.btn_collapse_all.clicked.connect(self._on_collapse_all)
+        self.btn_expand_sel.clicked.connect(self._on_expand_selection)
+        self.btn_collapse_sel.clicked.connect(self._on_collapse_selection)
+
+        # 构建下拉菜单
+        self._rebuild_editor_menu()
 
     # ------------ Busy banner callback injection ------------
     def set_busy_callback(self, cb):
@@ -98,8 +129,16 @@ class EditorTab(QWidget):
     # ---------- Document updates ----------
     @Slot(object)
     def on_document_changed(self, data):
-        # Do not auto-expand; allow state restoration to take effect.
         self.model.load(data)
+        self._update_title_from_document()
+        if getattr(self.document, "file_path", None):
+            self.recent_mgr.add_file(self.document.file_path)
+            self._rebuild_editor_menu()
+
+    def _update_title_from_document(self):
+        fp = getattr(self.document, "file_path", None)
+        self._current_file = fp if isinstance(fp, str) else None
+        self.title_btn.setText(Path(fp).name if fp else "(No file)")
 
     # ---------- Public API for MainWindow ----------
     def current_json(self):
@@ -143,6 +182,33 @@ class EditorTab(QWidget):
 
     def clear(self):
         self.model.clear()
+
+    # ---------- 下拉菜单相关 ----------
+    def _rebuild_editor_menu(self):
+        menu = QMenu(self.menu_btn)
+        files = self.recent_mgr.get_files()
+        if not files:
+            a = menu.addAction("(no recent files)")
+            a.setEnabled(False)
+        else:
+            for abs_path in files:
+                name = Path(abs_path).name
+                act = menu.addAction(name)
+                act.setToolTip(abs_path)
+                act.triggered.connect(lambda checked=False, p=abs_path: self._choose_file_for_editor(p))
+        self.menu_btn.setMenu(menu)
+
+    def _choose_file_for_editor(self, abs_path: str):
+        """选择要编辑的文件：切换全局 document，这样 Viewer/Editor 一起更新。"""
+        try:
+            self._busy(True, f"Loading {Path(abs_path).name} ...")
+            self.title_btn.setText(Path(abs_path).name)  # 先更新标题
+            if self.document is not None:
+                self.document.load(abs_path)
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to open:\n{abs_path}\n\n{e}")
+        finally:
+            self._busy(False)
 
     # ---------- Toolbar handlers ----------
     @Slot()

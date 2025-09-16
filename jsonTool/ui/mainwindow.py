@@ -10,12 +10,12 @@ from PySide6.QtWidgets import (
 from PySide6.QtGui import QAction, QKeySequence
 from PySide6.QtCore import Qt
 
-from ui.tab_viewer import ViewerTab
-from ui.tab_editor import EditorTab
-from core.document import JSONDocument
-from ui.tab_doc import DocTab
-from ui.tab_unziper import UnziperTab
-from ui.tab_splitter import SplitterTab
+from jsonTool.ui.tab_viewer import ViewerTab
+from jsonTool.ui.tab_editor import EditorTab
+from jsonTool.core.document import JSONDocument
+from jsonTool.ui.tab_doc import DocTab
+from jsonTool.ui.tab_unziper import UnziperTab
+from jsonTool.ui.tab_splitter import SplitterTab
 
 
 
