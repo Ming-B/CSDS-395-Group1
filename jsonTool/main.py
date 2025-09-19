@@ -6,7 +6,7 @@ Responsible for launching QApplication and loading the main window MainWindow
 
 import sys
 from PySide6.QtWidgets import QApplication
-from ui.mainwindow import MainWindow
+from jsonTool.ui.mainwindow import MainWindow
 
 
 def main():
