@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QLabel
 )
 
-from core.json_model import JsonModel
+from jsonTool.core.json_model import JsonModel
 
 
 # ----------------------------- Helper: custom QTreeView with SHIFT same-parent range -----------------------------
@@ -417,10 +417,10 @@ class SplitterTab(QWidget):
 
             # output file name
             out_name = (out_item.text().strip() if out_item else "") or (name_item.text() + ".json")
-            out_name = os.path.basename(out_name)
+            out_name = Path(out_name).name
             if not out_name.lower().endswith(".json"):
                 out_name += ".json"
-            out_path = os.path.join(out_dir, out_name)
+            out_path = Path(out_dir) / out_name
 
             # extract and write
             try:

@@ -70,7 +70,7 @@ class DecodeWorker(QThread):
                     raise ValueError(f"Unsupported decoder: {task.decoder}")
 
                 out_name = self._ensure_json_name(task.output_name or Path(in_path).stem + ".json")
-                out_path = os.path.join(self.out_dir, out_name)
+                out_path = Path(self.out_dir) / out_name
 
                 # write json
                 self._write_json(data, out_path)
