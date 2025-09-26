@@ -16,7 +16,7 @@ from jsonTool.core.document import JSONDocument
 from jsonTool.ui.tab_doc import DocTab
 from jsonTool.ui.tab_unziper import UnziperTab
 from jsonTool.ui.tab_splitter import SplitterTab
-
+from jsonTool.ui.tab_table import TableTab
 
 
 
@@ -60,11 +60,13 @@ class MainWindow(QMainWindow):
         self.splitter_tab = SplitterTab(self)
         self.unziper_tab = UnziperTab(self)
         self.doc_tab = DocTab(self, config_ref=self._config, save_config_cb=self._save_user_config)
+        self.table_tab = TableTab(self, document=self.document)
         self.tabs.addTab(self.viewer_tab, "Viewer")
         self.tabs.addTab(self.editor_tab, "Editor")
         self.tabs.addTab(self.splitter_tab, "Splitter")
         self.tabs.addTab(self.unziper_tab, "Unziper")
         self.tabs.addTab(self.doc_tab, "Docs")
+        self.tabs.addTab(self.table_tab, "Table")
 
 
 
@@ -88,6 +90,7 @@ class MainWindow(QMainWindow):
         # Inject busy API to tabs
         self.viewer_tab.set_busy_callback(self.set_busy)
         self.editor_tab.set_busy_callback(self.set_busy)
+        self.table_tab.set_busy_callback(self.set_busy)
 
     # ---------------- Config helpers ----------------
     def _load_user_config(self) -> dict:
