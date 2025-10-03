@@ -1,0 +1,274 @@
+project:
+  name: JSON Tool
+  purpose: Desktop JSON viewer+editor with snapshot-based undo/redo and per-tab view-state restoration
+  runtime:
+    language: python
+    gui: PySide6/Qt
+    entrypoint: main.py
+  generated_at_utc: "2025-09-07T00:00:00Z"
+
+layers:
+  core:
+    - path: core/json_model.py
+      classes:
+        - JsonModel:
+            columns: [key, value]
+            editable:
+              keys: configurable (EditorTab=True, ViewerTab=False)
+              values: configurable (EditorTab=True, ViewerTab=False)
+            parsing:
+              strategy:
+                - first_try: json.loads(text)
+                - fallback_literals: case-insensitive true|false|null
+                - else: raw string
+            setData_semantics:
+              value_edit:
+                containers_forbidden: true  # cannot directly edit dict/list leaf as scalar
+                scalar_update: in_place  # updates TreeItem.value/type and emits dataChanged (no model reset)
+                structural_update: reload_entire_model  # when parsed value is dict/list; preserves via view-state hooks
+              key_edit:
+                allowed_when_parent_is_dict: true
+                sibling_name_unique_required: true
+                parent_is_list_or_root: false
+                implementation: rebuild_dict_key_and_reload
+            view_data_roles:
+              font: monospaced
+              color_by_type: enabled
+              display_rules:
+                dict: "{...} // {childCount} key"
+                list: "[...] // {childCount} item"
+                str: json_escaped
+                number: as_string
+                bool: "true|false"
+                null: "null"
+            api:
+              methods:
+                - load(document: dict|list|tuple) -> bool  # resets model
+                - clear() -> None
+                - to_json(item=None) -> dict|list|scalar
+                - flags(index) -> editability by column and config
+            internal_helpers:
+              - _parse_user_input(text) -> Any
+              - _item_path(TreeItem) -> list[path_segment]
+              - _set_value_by_path_and_reload(path, new_value) -> None
+        - TreeItem:
+            fields: [parent, key, value, value_type, children]
+            key_type: str|int  # int for list index
+            value_type: python_type  # dict|list|str|int|float|bool|NoneType
+  ui:
+    - path: ui/tab_viewer.py
+      role: read_only_tree_view
+      model: JsonModel(editable_keys=False, editable_values=False)
+      widgets:
+        - local_toolbar:
+            actions: [Expand All, Collapse All, Expand Selection, Collapse Selection]
+      view_state:
+        capture_api: capture_view_state() -> {expanded_paths, current_path, scroll}
+        restore_api: schedule_restore_view_state(state: dict|None) -> None
+        auto_hooks:
+          - on modelAboutToBeReset: _save_view_state()
+          - on modelReset: _restore_view_state()
+      document_binding:
+        on JSONDocument.dataChanged: model.load(data)
+      edit_triggers: NoEditTriggers
+      busy_injection: set_busy_callback(callable)
+    - path: ui/tab_editor.py
+      role: editable_tree_view
+      model: JsonModel(editable_keys=True, editable_values=True)
+      widgets:
+        - local_toolbar:
+            actions: [Expand All, Collapse All, Expand Selection, Collapse Selection]
+      edit_triggers: [DoubleClicked, EditKeyPressed(Enter/F2), SelectedClicked]
+      view_state:
+        capture_api: capture_view_state() -> {expanded_paths, current_path, scroll}
+        restore_api: schedule_restore_view_state(state: dict|None) -> None
+        auto_hooks:
+          - on modelAboutToBeReset: _save_view_state()
+          - on modelReset: _restore_view_state()
+      document_binding:
+        on JSONDocument.dataChanged: model.load(data)
+      busy_injection: set_busy_callback(callable)
+    - path: ui/mainwindow.py
+      role: app_shell + snapshot_manager
+      structure:
+        central: QTabWidget(tabs=[Viewer, Editor])
+        menubar:
+          menus:
+            - File:
+                items:
+                  - Open... (Ctrl+O) -> _action_open_file()
+                  - Close (Ctrl+W) -> _action_close_file()
+                  - separator
+                  - Save Progress (Ctrl+S) -> _action_save_progress()
+                  - Undo (Ctrl+Z) -> _action_undo()
+                  - Redo (Ctrl+Y) -> _action_redo()
+        top_right_corner_buttons:
+          - QPushButton "Save Progress" -> _action_save_progress()
+          - QPushButton "Undo" -> _action_undo()
+          - QPushButton "Redo" -> _action_redo()
+        status_bar:
+          - busy_banner QLabel: set via set_busy(True/False, msg)
+      document: core.document.JSONDocument  # single global document instance
+      snapshot_system:
+        workspace_dir: ${repo_root}/workspace
+        cleanup_policy:
+          - on_app_start: clear
+          - on_file_close: clear
+          - on_app_exit: clear
+        naming:
+          data_snapshot_file: "{basename}_snapshot_%Y_%m_%d_%H%M_%S.json"
+          meta_snapshot_file: same_name_with_suffix(".meta.json")
+          basename_source: Path(opened_file).stem
+        contents:
+          data_snapshot: JSON serialized data (dict/list/scalars)
+          meta_snapshot:
+            version: 1
+            tabs:
+              Editor: {expanded_paths, current_path, scroll}
+              Viewer: {expanded_paths, current_path, scroll}
+        history_indexing:
+          list_function: _list_data_snapshots() -> sorted list of *.json excluding *.meta.json
+          rebuild: _rebuild_history_list()
+          pointer: _history_index (int, -1 when uninitialized)
+        operations:
+          - initial_snapshot_on_open:
+              flow:
+                _clear_workspace()
+                write data_snapshot (document.get_data())
+                write meta_snapshot (capture both tabs)
+                rebuild_history -> point to last
+          - save_progress:
+              source_data: prefer EditorTab.current_json(); fallback document.get_data()
+              write data_snapshot
+              if update_document=True: document.set_data(data)
+              write meta_snapshot (capture both tabs)
+              rebuild_history -> point to last
+          - undo/redo_load(idx):
+              meta_preload: read *.meta.json if exists -> schedule_restore_view_state() on both tabs
+              set_busy("Loading snapshot (i/N)...")
+              read data_snapshot -> document.set_data(data)  # triggers both tabs to reload
+              update pointer & buttons
+              busy off
+        safety_guards:
+          - history_filter_excludes_meta: true  # *.meta.json are never treated as data
+          - extra_guard_in_load: if selected path endswith ".meta.json", skip to nearest valid data snapshot
+      buttons_state_logic:
+        _refresh_history_buttons():
+          undo_enabled: history_exists && (index==-1 || index>0)
+          redo_enabled: history_exists && (index!=-1 && index+1<n)
+      busy_api:
+        - set_busy(is_busy: bool, msg: str="...") -> updates red banner & processes events
+
+  app:
+    - path: main.py
+      action: create QApplication -> instantiate MainWindow -> show -> exec()
+
+aux:
+  - path: core/document.py
+    role: JSONDocument (global data holder)
+    api:
+      - load(path: str) -> None  # sync load; emits dataChanged on success
+      - load_async(path: str) -> None  # optional async; signals below
+      - save(path: str|None=None) -> None
+      - set_data(data: dict|list|scalar) -> None  # emits dataChanged
+      - get_data() -> dict|list|scalar|None
+    signals:
+      - dataChanged(object data)
+      - loadStarted()
+      - loadFinished()
+      - loadFailed(str message)
+    notes: MainWindow uses sync load(); future-safe to wire async with busy banner
+  - path: viewer.py (optional dev-only)
+    role: standalone minimal viewer for JsonModel
+    status: not required by app; can remain under scripts/ for regression checks
+  - path: readme.md
+    role: developer notes and roadmap (not required at runtime)
+
+behaviors:
+  open_file_flow:
+    - UI: File→Open...
+    - MainWindow._action_open_file():
+        set_busy(True,"Loading file...")
+        document.load(path)  # triggers both tabs reload
+        set window title; status message
+        set _snapshot_prefix = stem(path)
+        reset history in memory
+        _clear_workspace()
+        _save_snapshot(document.get_data(), update_document=False, "Saving initial snapshot...")
+        set_busy(False)
+  close_file_flow:
+    - document.set_data({})  # clears views
+    - _clear_workspace(); reset in-memory history; reset window title
+  edit_value_flow (EditorTab):
+    - user edits value column on a scalar node
+    - JsonModel._parse_user_input(text) -> parsed_value
+    - if parsed_value is scalar: in-place update; emit dataChanged (no model reset; view state preserved)
+    - if parsed_value is dict/list: write-by-path then model.load(); view-state saved/restored via hooks
+  rename_key_flow (EditorTab):
+    - allowed only if parent is dict and new name not used among siblings
+    - rebuild dict key (new_key = pop(old_key)); model.load(); hooks restore view
+  view_state_reconstruction:
+    path_encoding:
+      - path is a list of keys/indexes from root to node, e.g. ["users", 3, "email"]
+    capture:
+      - DFS through model recording all expanded node paths
+      - record current selection path (column 0) and vertical scroll value
+    restore:
+      - for each saved path: find_index_by_path() by walking rows and matching item.key; expand if found
+      - re-select saved current path if found; restore scroll value
+      - paths missing due to structural changes are skipped silently
+
+ui_contracts:
+  shortcuts:
+    - Open: Ctrl+O
+    - Close: Ctrl+W
+    - Save Progress: Ctrl+S
+    - Undo: Ctrl+Z
+    - Redo: Ctrl+Y
+  top_bar_buttons:
+    - visible_right_of_menubar: [Save Progress, Undo, Redo]
+    - click_actions: mirror menu items
+  persistence:
+    auto_save: false  # no autosave; only on Ctrl+S or Save Progress button
+    initial_snapshot_on_open: true
+    per_save_creates_new_snapshot: true
+    workspace_cleared_on: [app_start, file_close, app_exit]
+  file_filters:
+    history_listing: include "*.json" matching pattern; exclude "*.meta.json"
+    meta_association: data_file_path.with_suffix(".meta.json")
+
+error_handling:
+  dialogs:
+    - QFileDialog for open
+    - QMessageBox.critical on load/save errors
+    - QMessageBox.information for benign infos (e.g., no selection / no data)
+
+non_goals_currently:
+  - autosave_on_edit
+  - concurrent editing sessions or multi-document tabs
+  - schema validation, search/replace, diff/merge (planned candidates for a future services layer)
+
+extensibility_notes:
+  recommended_separation:
+    - keep core (JsonModel, JSONDocument) UI-agnostic except PySide model requirements
+    - snapshot/validation/search can be refactored into a headless services layer later
+  easy_hooks:
+    - integrate async loading by wiring JSONDocument.loadStarted/Finished/Failed to set_busy()
+    - add schema validation as a pre-save hook that annotates nodes or blocks saving
+
+state_invariants:
+  - history snapshots are immutable once written
+  - meta files are never treated as data snapshots
+  - list indices are non-editable keys
+  - dict keys must be unique among siblings after rename
+  - EditorTab’s scalar edits never trigger a modelReset; structural edits may trigger modelReset
+  - on any modelReset, both tabs independently restore view state from either pending snapshot-state or last-saved UI-state
+
+endpoints_for_ai_tests:
+  open_file(path) -> initial snapshot in workspace; history_index=last
+  save_progress() -> new snapshot+meta; history_index=last; document updated
+  undo() -> history_index-- (>=0), load data+meta, both tabs restored
+  redo() -> history_index++ (<len), load data+meta, both tabs restored
+  edit_scalar(path, new_scalar) -> EditorTab shows updated value without collapsing
+  edit_to_object_or_array(path, json_text) -> structure updated; view restored after reset
+  rename_key(path_to_key, new_name) -> dict updated; view restored after reset

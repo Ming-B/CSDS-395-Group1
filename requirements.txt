@@ -1,0 +1,6 @@
+# JSON Tool Dependencies
+# GUI Framework
+PySide6>=6.5.0
+
+# Markdown rendering for documentation
+markdown>=3.4.0
