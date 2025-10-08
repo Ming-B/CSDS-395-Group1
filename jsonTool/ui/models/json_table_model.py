@@ -19,6 +19,12 @@ class JsonTableModel(QAbstractTableModel):
     def load_data(self, data: Any):
         """Load JSON data into the table model."""
         self.beginResetModel()
+        print(type(data).__name__)
+
+
+        if isinstance(data, dict) and len(data) == 1:
+            _, value = list(data.items())[0]
+            data = value
         
         if isinstance(data, list) and all(isinstance(item, dict) for item in data):
             self._data = data.copy()
@@ -27,10 +33,6 @@ class JsonTableModel(QAbstractTableModel):
             for item in self._data:
                 all_keys.update(item.keys())
             self._headers = sorted(all_keys)
-        elif isinstance(data, dict):
-            # Convert single dict to list of key-value pairs
-            self._data = [{"Key": k, "Value": v} for k, v in data.items()]
-            self._headers = ["Key", "Value"]
         else:
             # Fallback: create a simple representation
             self._data = [{"Data": str(data)}]
@@ -44,9 +46,9 @@ class JsonTableModel(QAbstractTableModel):
     def columnCount(self, parent=QModelIndex()) -> int:
         return len(self._headers)
     
-    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.DisplayRole):
-        if role == Qt.DisplayRole:
-            if orientation == Qt.Horizontal:
+    def headerData(self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole:
+            if orientation == Qt.Orientation.Horizontal:
                 return self._headers[section] if section < len(self._headers) else ""
             else:
                 return str(section + 1)
@@ -74,11 +76,11 @@ class JsonTableModel(QAbstractTableModel):
         
         return None
     
-    def setData(self, index: QModelIndex, value: Any, role: int = Qt.EditRole) -> bool:
+    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole.EditRole) -> bool:
         if not self._editable or not index.isValid() or index.row() >= len(self._data):
             return False
         
-        if role == Qt.EditRole:
+        if role == Qt.ItemDataRole.EditRole:
             row = index.row()
             col = index.column()
             

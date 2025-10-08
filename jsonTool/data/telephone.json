@@ -1,0 +1,91 @@
+{
+  "result": [
+    {
+      "message": "Hello, Aimee! Your order number is: #21",
+      "phoneNumber": "236-330-6787 x8411",
+      "phoneVariation": "+90 334 360 10 80",
+      "status": "active",
+      "name": {
+        "first": "Kaden",
+        "middle": "Arden",
+        "last": "Schinner"
+      },
+      "username": "Kaden-Schinner",
+      "password": "jLTfVCQqKeUxYsA",
+      "emails": [
+        "Margarita_Volkman@example.com",
+        "Roderick27@gmail.com"
+      ],
+      "location": {
+        "street": "79928 Cole Brooks",
+        "city": "Rockville",
+        "state": "Rhode Island",
+        "country": "Madagascar",
+        "zip": "26878",
+        "coordinates": {
+          "latitude": "-21.2208",
+          "longitude": "-72.7098"
+        }
+      },
+      "website": "https://dapper-course.biz/",
+      "domain": "partial-primate.org",
+      "job": {
+        "title": "Legacy Implementation Liaison",
+        "descriptor": "Dynamic",
+        "area": "Operations",
+        "type": "Consultant",
+        "company": "Bergstrom Group"
+      },
+      "creditCard": {
+        "number": "4074280702136",
+        "cvv": "174",
+        "issuer": "american_express"
+      },
+      "uuid": "37d5f181-04d4-4b8d-b1e2-3b5697979070",
+      "objectId": "68e6e01cf43e485b76521638"
+    },
+    {
+      "message": "Hello, Kacey! Your order number is: #30",
+      "phoneNumber": "724.431.7978",
+      "phoneVariation": "+90 345 143 10 99",
+      "status": "active",
+      "name": {
+        "first": "Emilio",
+        "middle": "Emerson",
+        "last": "Stracke"
+      },
+      "username": "Emilio-Stracke",
+      "password": "0E2WXjrxiqElgQM",
+      "emails": [
+        "Hayley_Ebert82@example.com",
+        "Polly.Bogan@gmail.com"
+      ],
+      "location": {
+        "street": "4174 Maxie Rapids",
+        "city": "North Las Vegas",
+        "state": "Ohio",
+        "country": "Mauritania",
+        "zip": "32092",
+        "coordinates": {
+          "latitude": "22.9099",
+          "longitude": "-178.7841"
+        }
+      },
+      "website": "https://distant-eardrum.org",
+      "domain": "simplistic-ore.name",
+      "job": {
+        "title": "Forward Brand Representative",
+        "descriptor": "Senior",
+        "area": "Assurance",
+        "type": "Producer",
+        "company": "Ritchie - Bernhard"
+      },
+      "creditCard": {
+        "number": "5482-7156-0820-5760",
+        "cvv": "647",
+        "issuer": "mastercard"
+      },
+      "uuid": "8a1aae4c-f0bb-4464-84e8-7bd8c382ecee",
+      "objectId": "68e6e01cf43e485b76521639"
+    }
+] }
