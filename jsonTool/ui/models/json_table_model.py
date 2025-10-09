@@ -19,12 +19,15 @@ class JsonTableModel(QAbstractTableModel):
     def load_data(self, data: Any):
         """Load JSON data into the table model."""
         self.beginResetModel()
-        print(type(data).__name__)
+        # print(type(data).__name__)
 
 
         if isinstance(data, dict) and len(data) == 1:
             _, value = list(data.items())[0]
             data = value
+        
+        if isinstance(data, dict) and len(data) != 1: # temp solution? kind of works
+            data = [data]
         
         if isinstance(data, list) and all(isinstance(item, dict) for item in data):
             self._data = data.copy()
@@ -33,6 +36,7 @@ class JsonTableModel(QAbstractTableModel):
             for item in self._data:
                 all_keys.update(item.keys())
             self._headers = sorted(all_keys)
+        
         else:
             # Fallback: create a simple representation
             self._data = [{"Data": str(data)}]
