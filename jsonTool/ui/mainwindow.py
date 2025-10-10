@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
     QWidget, QHBoxLayout, QPushButton, QSizePolicy
 )
 from PySide6.QtGui import QAction, QKeySequence
+from PySide6.QtWidgets import QProxyStyle, QStyle
 from PySide6.QtCore import Qt
 
 from jsonTool.ui.tab_viewer import ViewerTab
@@ -19,7 +20,17 @@ from jsonTool.ui.tab_splitter import SplitterTab
 
 
 
-
+class FastToolTipStyle(QProxyStyle):
+    """Style proxy for globally accelerated ToolTip:
+       - SH_ToolTip_WakeUpDelay: ToolTip Delay before emergence (milliseconds)
+       - SH_ToolTip_FallAsleepDelay: ToolTip Duration (milliseconds)
+    """
+    def styleHint(self, hint, option=None, widget=None, returnData=None):
+        if hint == QStyle.SH_ToolTip_WakeUpDelay:
+            return 100   # ← Appears on hover for 0.1 seconds (can be turned down again, e.g. 50)
+        if hint == QStyle.SH_ToolTip_FallAsleepDelay:
+            return 20000 # ← Hold for up to 20 seconds to avoid disappearing too quickly (adjustable as needed)
+        return super().styleHint(hint, option, widget, returnData)
 
 
 class MainWindow(QMainWindow):
@@ -27,6 +38,10 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+
+        app = QApplication.instance()
+        if app is not None:
+            app.setStyle(FastToolTipStyle(app.style()))
 
         self.setWindowTitle("JSON Tool")
         self.resize(1000, 650)
