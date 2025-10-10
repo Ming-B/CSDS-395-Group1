@@ -260,6 +260,10 @@ class MainWindow(QMainWindow):
                 update_document=False,
                 banner_msg="Saving initial snapshot..."
             )
+            
+            # Ask if user wants to store to database
+            self._ask_store_to_database(p)
+            
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to open file:\n{e}")
         finally:
@@ -433,6 +437,42 @@ class MainWindow(QMainWindow):
     def _action_save_progress(self):
         data = self._collect_current_json()
         self._save_snapshot(data, update_document=True, banner_msg="Saving snapshot...")
+        
+    def _ask_store_to_database(self, file_path: Path):
+        """Ask user if they want to store the JSON file to database"""
+        try:
+            from jsonTool.core.database import get_database_manager
+            
+            reply = QMessageBox.question(
+                self, 
+                "Store to Database", 
+                f"Do you want to store '{file_path.name}' to the database?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.set_busy(True, "Storing to database...")
+                
+                # Get current JSON data
+                json_data = self.document.get_data()
+                
+                # Store to database
+                db_manager = get_database_manager()
+                file_index = db_manager.store_json_file(file_path.name, json_data)
+                
+                QMessageBox.information(
+                    self, 
+                    "Success", 
+                    f"File '{file_path.name}' stored to database with index {file_index}"
+                )
+                
+                self.statusBar().showMessage(f"Stored to database: index {file_index}", 5000)
+                
+        except Exception as e:
+            QMessageBox.critical(self, "Database Error", f"Failed to store to database:\n{e}")
+        finally:
+            self.set_busy(False)
 
     def _load_history_at(self, idx: int):
         """
