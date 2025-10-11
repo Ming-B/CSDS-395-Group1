@@ -6,13 +6,13 @@
         "name": 2,
         "tier": 3,
         "description": 4,
-        "abilityKey": 4,
-        "abilityIcon": 5,
-        "equipSlotFlags": [
-          2623,
-          8767,
-          4671
-        ],
+          "abilityKey": 4,
+          "abilityIcon": 5,
+          "equipSlotFlags": [
+            2623,
+            8767,
+            4671
+          ],
         "positions": [
           0,
           1,

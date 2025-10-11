@@ -8,8 +8,8 @@ from PySide6.QtWidgets import (
     QWidget, QHBoxLayout, QPushButton, QSizePolicy
 )
 from PySide6.QtGui import QAction, QKeySequence
-from PySide6.QtWidgets import QProxyStyle, QStyle
 from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QProxyStyle, QStyle
 
 from jsonTool.ui.tab_viewer import ViewerTab
 from jsonTool.ui.tab_editor import EditorTab
@@ -17,7 +17,7 @@ from jsonTool.core.document import JSONDocument
 from jsonTool.ui.tab_doc import DocTab
 from jsonTool.ui.tab_unziper import UnziperTab
 from jsonTool.ui.tab_splitter import SplitterTab
-
+from jsonTool.ui.tab_table import TableTab
 
 
 class FastToolTipStyle(QProxyStyle):
@@ -38,7 +38,7 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-
+        
         app = QApplication.instance()
         if app is not None:
             app.setStyle(FastToolTipStyle(app.style()))
@@ -75,11 +75,13 @@ class MainWindow(QMainWindow):
         self.splitter_tab = SplitterTab(self)
         self.unziper_tab = UnziperTab(self)
         self.doc_tab = DocTab(self, config_ref=self._config, save_config_cb=self._save_user_config)
+        self.table_tab = TableTab(self, document=self.document)
         self.tabs.addTab(self.viewer_tab, "Viewer")
         self.tabs.addTab(self.editor_tab, "Editor")
         self.tabs.addTab(self.splitter_tab, "Splitter")
         self.tabs.addTab(self.unziper_tab, "Unziper")
         self.tabs.addTab(self.doc_tab, "Docs")
+        self.tabs.addTab(self.table_tab, "Table")
 
 
 
@@ -103,6 +105,7 @@ class MainWindow(QMainWindow):
         # Inject busy API to tabs
         self.viewer_tab.set_busy_callback(self.set_busy)
         self.editor_tab.set_busy_callback(self.set_busy)
+        self.table_tab.set_busy_callback(self.set_busy)
 
     # ---------------- Config helpers ----------------
     def _load_user_config(self) -> dict:
@@ -449,7 +452,7 @@ class MainWindow(QMainWindow):
     def _action_save_progress(self):
         data = self._collect_current_json()
         self._save_snapshot(data, update_document=True, banner_msg="Saving snapshot...")
-
+        
     def _ask_store_to_database(self, file_path: Path):
         """Ask user if they want to store the JSON file to database"""
         try:
