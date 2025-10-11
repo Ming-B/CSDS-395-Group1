@@ -32,13 +32,13 @@ class EditorTab(QWidget):
 
         toolbar = QHBoxLayout()
         # 精简符号 + 英文 tooltip
-        self.btn_expand_all = QPushButton("[]<", self)
+        self.btn_expand_all = QPushButton("⬇️📁", self)
         self.btn_expand_all.setToolTip("Expand All")
-        self.btn_collapse_all = QPushButton("[]=", self)
+        self.btn_collapse_all = QPushButton("⬆️📁", self)
         self.btn_collapse_all.setToolTip("Collapse All")
-        self.btn_expand_sel = QPushButton("+<", self)
+        self.btn_expand_sel = QPushButton("➡️📄", self)
         self.btn_expand_sel.setToolTip("Expand Selection")
-        self.btn_collapse_sel = QPushButton("+=", self)
+        self.btn_collapse_sel = QPushButton("⬅️📄", self)
         self.btn_collapse_sel.setToolTip("Collapse Selection")
 
         toolbar.addWidget(self.btn_expand_all)
