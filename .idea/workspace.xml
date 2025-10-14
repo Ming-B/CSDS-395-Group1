@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905575b7-7ea5-49c6-bdc8-130a2a596dee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jsonTool/data/telephone.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonTool/config/user.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsonTool/config/user.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsonTool/ui/models/json_table_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/jsonTool/ui/models/json_table_model.py" afterDir="false" />
-    </list>
+    <list default="true" id="905575b7-7ea5-49c6-bdc8-130a2a596dee" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "an-nguyen",
+    "git-widget-placeholder": "development",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -97,7 +93,9 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CSDS395Project$main.coverage" NAME="main Coverage Results" MODIFIED="1759963901060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool" />
-    <SUITE FILE_PATH="coverage/CSDS395Project$json_table_model.coverage" NAME="json_table_model Coverage Results" MODIFIED="1759963764104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui/models" />
+    <SUITE FILE_PATH="coverage/CSDS395Project$main.coverage" NAME="main Coverage Results" MODIFIED="1760401202209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool" />
+    <SUITE FILE_PATH="coverage/CSDS395Project$json_table_model.coverage" NAME="json_table_model Coverage Results" MODIFIED="1759970301257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui/models" />
+    <SUITE FILE_PATH="coverage/CSDS395Project$tab_unzipper.coverage" NAME="tab_unzipper Coverage Results" MODIFIED="1760400958276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui" />
+    <SUITE FILE_PATH="coverage/CSDS395Project$mainwindow.coverage" NAME="mainwindow Coverage Results" MODIFIED="1760401142209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui" />
   </component>
 </project>
