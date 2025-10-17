@@ -1,0 +1,144 @@
+[
+    {
+        "id": "Keel",
+        "icon": "ch_Keel_ability",
+        "abilities": [
+            "KEEL_ADDITION_TITAN_DMG",
+            "KEEL_CHARGE_SPEED",
+            "HUNTER_DEAL_DAMAGE"
+        ]
+    },
+    {
+        "id": "Frederick",
+        "icon": "ch_Frederick_ability",
+        "abilities": [
+            "FREDERICK_CHARGE_SPEED",
+            "FREDERICK_WEAKENING_DAMAGE",
+            "FREDERICK_WEAKENING_SPEED"
+        ]
+    },
+    {
+        "id": "Dreadnought",
+        "icon": "ch_Dreadnought_ability",
+        "abilities": [
+            "DREADNOUGHT_DEAL_DAMAGE",
+            "DREADNOUGHT_CHARGE_SPEED"
+        ]
+    },
+    {
+        "id": "Beholder",
+        "icon": "ch_Beholder_ability",
+        "abilities": [
+            "BEHOLDER_CHARGE_SPEED",
+            "BEHOLDER_BEAM_DAMAGE",
+            "BEHOLDER_AOE_BLAST"
+        ]
+    },
+    {
+        "id": "Monarch",
+        "icon": "ch_Monarch_ability",
+        "abilities": [
+            "MONARCH_DEAL_DAMAGE",
+            "MONARCH_CHARGE_SPEED",
+            "MONARCH_DOT"
+        ]
+    },
+    {
+        "id": "Bifrost",
+        "icon": "ch_Bifrost_ability",
+        "abilities": [
+            "BIFROST_CHARGE_SPEED",
+            "BIFROST_WEAKENING_ARMOR",
+            "BIFROST_CLEANCEONCE",
+            "BIFROST_PENETRATION_RESIST"
+        ]
+    },
+    {
+        "id": "Roulette",
+        "icon": "ch_Roulette_ability",
+        "abilities": [
+            "ROULETTE_CHARGE_SPEED",
+            "ROULETTE_RUST",
+            "ROULETTE_DOT"
+        ]
+    },
+    {
+        "id": "Avalon",
+        "icon": "ch_Avalon_ability",
+        "abilities": [
+            "AVALON_CHARGE_SPEED",
+            "AVALON_CLEANSE",
+            "AVALON_HEAL"
+        ]
+    },
+    {
+        "id": "Mantis",
+        "icon": "ch_Mantis_ability",
+        "abilities": [
+            "MANTIS_BLAST_HEAL",
+            "MANTIS_BLAST_AEGIS",
+            "MANTIS_CHARGE_SPEED"
+        ]
+    },
+    {
+        "id": "Orion",
+        "icon": "ch_Orion_ability",
+        "abilities": [
+            "ORION_ADDITION_TITAN_DMG",
+            "ORION_CHARGE_SPEED",
+            "ORION_DEAL_DAMAGE"
+        ]
+    },
+    {
+        "id": "Thor",
+        "icon": "ch_Thor_ability",
+        "abilities": [
+            "THOR_SHOCKED",
+            "THOR_CHARGE_SPEED",
+            "THOR_DEAL_DAMAGE"
+        ]
+    },
+    {
+        "id": "Northlight",
+        "icon": "ch_Northlight_ability",
+        "abilities": [
+            "NORTHLIGHT_CHARGE_SPEED",
+            "NORTHLIGHT_HEAL",
+            "NORTHLIGHT_RESIST_BUFF"
+        ]
+    },
+    {
+        "id": "Sekhem",
+        "icon": "ch_Sekhem_ability",
+        "abilities": [
+            "SEKHEM_CHARGE_SPEED",
+            "SEKHEM_CARPET_DAMAGE"
+        ]
+    },
+    {
+        "id": "FrozenScorn",
+        "icon": "ch_FrozenScorn_ability",
+        "abilities": [
+            "FROZENSCORN_CHARGE_SPEED",
+            "FROZENSCORN_DOT",
+            "FROZENSCORN_FREEZE"
+        ]
+    },
+    {
+        "id": "Paladin",
+        "icon": "ch_Paladin_ability",
+        "abilities": [
+            "PALADIN_CHARGE_SPEED",
+            "PALADIN_RESTORATION_SHIELD"
+        ]
+    },
+    {
+        "id": "Mute",
+        "icon": "ch_Mute_ability",
+        "abilities": [
+            "MUTE_CHARGE_SPEED",
+            "MUTE_BLIND",
+            "MUTE_EMP"
+        ]
+    }
+]
