@@ -15,7 +15,7 @@ from jsonTool.ui.tab_viewer import ViewerTab
 from jsonTool.ui.tab_editor import EditorTab
 from jsonTool.core.document import JSONDocument
 from jsonTool.ui.tab_doc import DocTab
-from jsonTool.ui.tab_unziper import UnziperTab
+from jsonTool.ui.tab_unzipper import UnzipperTab
 from jsonTool.ui.tab_splitter import SplitterTab
 from jsonTool.ui.tab_table import TableTab
 
@@ -73,13 +73,13 @@ class MainWindow(QMainWindow):
         self.viewer_tab = ViewerTab(self, document=self.document)
         self.editor_tab = EditorTab(self, document=self.document)
         self.splitter_tab = SplitterTab(self)
-        self.unziper_tab = UnziperTab(self)
+        self.unzipper_tab = UnzipperTab(self)
         self.doc_tab = DocTab(self, config_ref=self._config, save_config_cb=self._save_user_config)
         self.table_tab = TableTab(self, document=self.document)
         self.tabs.addTab(self.viewer_tab, "Viewer")
         self.tabs.addTab(self.editor_tab, "Editor")
         self.tabs.addTab(self.splitter_tab, "Splitter")
-        self.tabs.addTab(self.unziper_tab, "Unziper")
+        self.tabs.addTab(self.unzipper_tab, "Unzipper")
         self.tabs.addTab(self.doc_tab, "Docs")
         self.tabs.addTab(self.table_tab, "Table")
 
@@ -90,14 +90,14 @@ class MainWindow(QMainWindow):
 
         # ------------ Bottom busy banner ------------
         self._busy_label = QLabel("", self)
-        self._busy_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        self._busy_label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
         self.statusBar().addPermanentWidget(self._busy_label, 1)
         self._idle_banner()
         # make status bar taller and text wrap
         self._busy_label.setWordWrap(True)
         self._busy_label.setMinimumHeight(32)
         self._busy_label.setContentsMargins(6, 4, 6, 4)
-        self._busy_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self._busy_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         self.statusBar().setStyleSheet("QStatusBar { min-height: 32px; }")
 
         self.statusBar().showMessage("Ready")
