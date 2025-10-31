@@ -253,7 +253,7 @@ class ViewerTab(QWidget):
         btn_x = QPushButton("X", row)
         btn_x.setFixedWidth(22)
         btn_x.setToolTip("Remove from list")
-        btn_x.clicked.connect(lambda: self._remove_recent_file(str(p)))
+        btn_x.clicked.connect(lambda: self._remove_recent_and_refresh(str(p)))
 
         h.addWidget(label, 1)
         h.addWidget(btn_x, 0)
