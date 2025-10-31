@@ -56,7 +56,7 @@ class EditorTab(QWidget):
         self.menu_btn.setText("▼")
         self.menu_btn.setFixedWidth(28)
         self.menu_btn.setToolTip("Choose a file to edit")
-        self.menu_btn.setPopupMode(QToolButton.InstantPopup)  # 点击即弹出
+        self.menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)  # 点击即弹出
         file_row.addWidget(self.title_btn, 1)
         file_row.addWidget(self.menu_btn, 0)
         root_layout.addLayout(file_row)
@@ -71,8 +71,6 @@ class EditorTab(QWidget):
         # Edit triggers: double-click / Enter(F2) / selected-click
         self.tree_view.setEditTriggers(
             QAbstractItemView.EditTrigger.DoubleClicked
-            | QAbstractItemView.EditTrigger.EditKeyPressed
-            | QAbstractItemView.EditTrigger.SelectedClicked
         )
 
         # Preserve/restore view state around model resets (when structure changes)
@@ -85,8 +83,8 @@ class EditorTab(QWidget):
 
         # View tweaks
         header = self.tree_view.header()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         self.tree_view.setIndentation(16)
         self.tree_view.setRootIsDecorated(True)
 

@@ -69,16 +69,15 @@ class TableTab(QWidget):
         # Table configuration
         self.table_view.setEditTriggers(
             QAbstractItemView.EditTrigger.DoubleClicked
-            | QAbstractItemView.EditTrigger.EditKeyPressed
-            | QAbstractItemView.EditTrigger.SelectedClicked
         )
-        self.table_view.setSelectionBehavior(QAbstractItemView.SelectRows)
+        
+        self.table_view.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
         self.table_view.setAlternatingRowColors(True)
         self.table_view.setSortingEnabled(True)
         
         # Auto-resize columns
         header = self.table_view.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.Interactive)
+        header.setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         header.setStretchLastSection(True)
         
         # Connect signals
@@ -131,7 +130,7 @@ class TableTab(QWidget):
         self.menu_btn.setText("▼")
         self.menu_btn.setFixedWidth(28)
         self.menu_btn.setToolTip("Choose a file to view in table format")
-        self.menu_btn.setPopupMode(QToolButton.InstantPopup)
+        self.menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
         
         file_row.addWidget(self.title_btn, 1)
         file_row.addWidget(self.menu_btn, 0)

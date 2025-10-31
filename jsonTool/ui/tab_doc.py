@@ -38,10 +38,10 @@ class DocTab(QWidget):
         self.lang_button.setFixedWidth(70)
 
         self.title_label = QLabel("CWRU | CSDS 395 | Fall 2025", self)
-        self.title_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        self.title_label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
 
-        top_layout.addWidget(self.lang_button, alignment=Qt.AlignLeft)
-        top_layout.addWidget(self.title_label, alignment=Qt.AlignLeft)
+        top_layout.addWidget(self.lang_button, alignment=Qt.AlignmentFlag.AlignLeft)
+        top_layout.addWidget(self.title_label, alignment=Qt.AlignmentFlag.AlignLeft)
         top_layout.addStretch(1)
 
         # -------- 下方：Markdown 渲染 --------

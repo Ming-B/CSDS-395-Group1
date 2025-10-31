@@ -73,7 +73,7 @@ class DecodeWorker(QThread):
                 out_path = Path(self.out_dir) / out_name
 
                 # write json
-                self._write_json(data, out_path)
+                self._write_json(data, str(out_path))
 
                 self.progressed.emit(in_path, out_path, True, "OK")
             except Exception as e:  # pragma: no cover
