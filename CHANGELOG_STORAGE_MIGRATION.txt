@@ -1,0 +1,157 @@
+===============================================================================
+STORAGE SYSTEM MIGRATION: FROM MYSQL DATABASE TO GIT FILE STORAGE
+===============================================================================
+
+SUMMARY
+-------
+My design of file storage change from MySQL database storage system to a Git-based 
+file storage system. This change eliminates the need for database configuration, 
+remote database connections, and makes team collaboration significantly simpler.
+
+REASON FOR CHANGE
+-----------------
+Original Problem:
+- The project used MySQL database (localhost) to store JSON files
+- Team members in different networks couldn't connect to the database
+- Required complex setup: cloud database, remote connections, or network configuration
+- Added unnecessary complexity for simple file storage needs
+
+Solution:
+- Switched to Git file storage - files are stored directly in the repository
+- No database configuration needed
+- Team members can simply pull from Git to get all stored files
+- Zero configuration required
+
+IMPLEMENTATION DETAILS
+----------------------
+
+1. File Structure
+   - Created: jsonTool/stored_files/
+   - Index file: stored_files/index.json (manages file metadata)
+   - Storage: stored_files/files/ (actual JSON files)
+   - File naming: 0001_filename.json, 0002_filename.json, etc.
+
+2. Code Changes
+   
+   Modified Files:
+   - jsonTool/core/database.py
+     * Removed: MySQL connection logic (pymysql)
+     * Added: File system storage implementation
+     * Maintained: Same API interface (store_json_file, get_json_by_index, etc.)
+   
+   - jsonTool/ui/mainwindow.py
+     * Updated: UI messages from "database" to "storage"
+     * Added: Information about Git commit/push for sharing
+   
+   - README.md
+     * Updated: Documentation with new storage system instructions
+     * Added: Usage guide for Git-based storage
+
+3. Storage System Features
+   - Automatic index management (index.json)
+   - Sequential file indexing (1, 2, 3, ...)
+   - File metadata tracking (filename, stored_at timestamp, record_count)
+   - Same API as database version (backward compatible interface)
+   - Automatic directory creation
+
+HOW IT WORKS
+------------
+
+Storage Process:
+1. User opens a JSON file in the application
+2. User clicks "Store to Storage" option
+3. System saves the file to: stored_files/files/XXXX_filename.json
+4. System updates index.json with file metadata
+5. User commits and pushes to Git repository
+6. Team members pull from Git to get all stored files
+
+File Index Format (index.json):
+{
+  "next_index": 2,
+  "files": [
+    {
+      "index": 1,
+      "file_name": "user.json",
+      "stored_file": "0001_user.json.json",
+      "stored_at": "2024-01-01T12:00:00",
+      "record_count": 10
+    }
+  ]
+}
+
+ADVANTAGES
+----------
+✓ No database required - works out of the box
+✓ No configuration needed - no connection strings, passwords, etc.
+✓ Team collaboration - standard Git workflow (pull/push)
+✓ Version control - all files have Git history
+✓ Simple deployment - just clone the repository
+✓ No network issues - no need for remote database connections
+✓ Free - no cloud database costs
+
+MIGRATION NOTES
+---------------
+
+Removed Dependencies (Optional):
+- PyMySQL is still in requirements.txt but no longer required
+  You can remove it if you want, but keeping it doesn't hurt
+
+Configuration Files:
+- application.properties still exists but is no longer used for storage
+  You can remove database-related configs if desired
+
+Database Code:
+- All database-specific code has been replaced
+- The API interface remains the same (get_database_manager())
+- Existing code using the storage system will continue to work
+
+USAGE INSTRUCTIONS
+------------------
+
+For Users:
+1. Open JSON file in application
+2. Choose "Store to Storage" when prompted
+3. Files are saved to stored_files/ directory
+4. Commit and push to share with team:
+   - git add stored_files/
+   - git commit -m "Add stored files"
+   - git push
+
+For Team Members:
+1. Pull latest code: git pull
+2. All stored files are automatically available
+3. No additional setup needed
+
+FILES CREATED
+-------------
+- jsonTool/stored_files/index.json (auto-created on first use)
+- jsonTool/stored_files/files/ (directory for stored JSON files)
+- jsonTool/stored_files/.gitkeep (ensures directory is tracked by Git)
+- jsonTool/stored_files/files/.gitkeep (ensures directory is tracked by Git)
+
+FILES MODIFIED
+--------------
+- jsonTool/core/database.py (complete rewrite)
+- jsonTool/ui/mainwindow.py (updated UI messages)
+- README.md (updated documentation)
+
+FILES REMOVED
+-------------
+- jsonTool/config/application.properties.example (no longer needed)
+- jsonTool/config/DATABASE_SETUP.md (replaced by README.md)
+- STORAGE_OPTIONS.md (temporary file, removed)
+
+
+TESTING
+-------
+To test the new storage system:
+1. Run the application
+2. Open a JSON file
+3. Use the "Store to Storage" feature
+4. Check that files are created in stored_files/files/
+5. Verify index.json is updated correctly
+6. Test retrieving files by index
+
+
+===============================================================================
+
