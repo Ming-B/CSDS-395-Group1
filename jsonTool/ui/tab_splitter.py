@@ -41,7 +41,7 @@ class RangeTreeView(QTreeView):
         mods = event.modifiers()
 
         # SHIFT range only when we have a valid anchor and same parent
-        if (mods & Qt.ShiftModifier) and self.anchor_index and idx.isValid():
+        if (mods & Qt.KeyboardModifier.ShiftModifier) and self.anchor_index and idx.isValid():
             a = self.anchor_index.sibling(self.anchor_index.row(), 0)
             b = idx.sibling(idx.row(), 0)
             if a.parent() == b.parent():
@@ -54,18 +54,18 @@ class RangeTreeView(QTreeView):
                     model.index(end, model.columnCount() - 1, parent),
                 )
                 sm = self.selectionModel()
-                if mods & (Qt.ControlModifier | Qt.MetaModifier):
-                    sm.select(sel, QItemSelectionModel.Select | QItemSelectionModel.Rows)
+                if mods & (Qt.KeyboardModifier.ControlModifier | Qt.KeyboardModifier.MetaModifier):
+                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select | QItemSelectionModel.SelectionFlag.Rows)
                 else:
                     sm.clearSelection()
-                    sm.select(sel, QItemSelectionModel.Select | QItemSelectionModel.Rows)
+                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select | QItemSelectionModel.SelectionFlag.Rows)
                 self.setCurrentIndex(idx)
                 # Do not update anchor on SHIFT gesture
                 return
 
         # Default behavior; update anchor on non-SHIFT actions
         super().mousePressEvent(event)
-        if not (mods & Qt.ShiftModifier):
+        if not (mods & Qt.KeyboardModifier.ShiftModifier):
             if idx.isValid():
                 self.anchor_index = idx
 
@@ -102,7 +102,7 @@ class SplitterTab(QWidget):
 
         # --- Root Splitter ---
         root = QVBoxLayout(self)
-        self.splitter = QSplitter(Qt.Horizontal, self)
+        self.splitter = QSplitter(Qt.Orientation.Horizontal, self)
         root.addWidget(self.splitter)
 
         # ================= Left Panel =================
@@ -137,8 +137,8 @@ class SplitterTab(QWidget):
 
         # Header and view tweaks
         header = self.tree.header()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         self.tree.setIndentation(16)
         self.tree.setRootIsDecorated(True)
 
@@ -159,9 +159,9 @@ class SplitterTab(QWidget):
         self.table = QTableWidget(0, 3, self.right_panel)
         self.table.setHorizontalHeaderLabels(["Substructure", "Output Name", "X"])
         th = self.table.horizontalHeader()
-        th.setSectionResizeMode(0, QHeaderView.Stretch)
-        th.setSectionResizeMode(1, QHeaderView.ResizeToContents)
-        th.setSectionResizeMode(2, QHeaderView.ResizeToContents)
+        th.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+        th.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        th.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
         right_v.addWidget(self.table, 1)
 
         # Right bottom: Choose output folder to start export

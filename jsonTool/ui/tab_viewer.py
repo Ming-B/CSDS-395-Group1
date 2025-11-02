@@ -82,7 +82,7 @@ class ViewerTab(QWidget):
         root_layout.addLayout(toolbar)
 
         # ---------- Splitter: left(main readers) | right(recent list) ----------
-        self.splitter = QSplitter(Qt.Horizontal, self)
+        self.splitter = QSplitter(Qt.Orientation.Horizontal, self)
         root_layout.addWidget(self.splitter)
 
         # ----- Left composite: two reader blocks (second is hidden in single mode) -----
@@ -156,8 +156,8 @@ class ViewerTab(QWidget):
     # ----------------------------- UI HELPERS -----------------------------
     def _tune_tree(self, tree: QTreeView):
         header = tree.header()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         tree.setIndentation(16)
         tree.setRootIsDecorated(True)
         tree.setEditTriggers(QTreeView.EditTrigger.NoEditTriggers)
@@ -173,7 +173,7 @@ class ViewerTab(QWidget):
     def _make_reader_block(self) -> dict:
         """Create a (frame -> vbox -> header(hbox: title btn + ▼) + tree)."""
         frame = QFrame(self)
-        frame.setFrameShape(QFrame.NoFrame)
+        frame.setFrameShape(QFrame.Shape.NoFrame)
         vbox = QVBoxLayout(frame)
         vbox.setContentsMargins(0, 0, 0, 0)
         vbox.setSpacing(4)
@@ -205,14 +205,14 @@ class ViewerTab(QWidget):
         frame = QFrame(self)
         frame.setMinimumWidth(220)
         frame.setMaximumWidth(340)
-        frame.setFrameShape(QFrame.StyledPanel)
+        frame.setFrameShape(QFrame.Shape.StyledPanel)
 
         vbox = QVBoxLayout(frame)
         vbox.setContentsMargins(6, 6, 6, 6)
         vbox.setSpacing(6)
 
         title = QLabel("Recent Files", frame)
-        title.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        title.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
         title.setStyleSheet("font-weight: 600;")
 
         # Scroll area of items
@@ -239,7 +239,7 @@ class ViewerTab(QWidget):
             return
 
         row = QFrame(self.right_sidebar["content"])
-        row.setFrameShape(QFrame.StyledPanel)
+        row.setFrameShape(QFrame.Shape.StyledPanel)
         row.setStyleSheet("QFrame { border: 0px solid #ddd; border-radius: 6px; }")
         h = QHBoxLayout(row)
         h.setContentsMargins(8, 4, 8, 4)
@@ -253,7 +253,7 @@ class ViewerTab(QWidget):
         btn_x = QPushButton("X", row)
         btn_x.setFixedWidth(22)
         btn_x.setToolTip("Remove from list")
-        btn_x.clicked.connect(lambda: self._remove_recent_file(str(p)))
+        btn_x.clicked.connect(lambda: self._remove_recent_and_refresh(str(p)))
 
         h.addWidget(label, 1)
         h.addWidget(btn_x, 0)
