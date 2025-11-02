@@ -1,0 +1,17 @@
+{
+  "age": 22,
+  "major": "Computer Science",
+  "name": "Andrew",
+  "projects": [
+    {
+      "group": 1,
+      "status": "completed",
+      "title_name": "CSDS Senior Project"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Data Analysis",
+    "Machine Learning"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "age": 22,
+  "major": "Art History",
+  "name": "Stephen",
+  "projects": [
+    {
+      "group": 1,
+      "status": "Completed",
+      "title": "CSDS Senior Project"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Data Analysis",
+    "Machine Learning"
+  ]
+}

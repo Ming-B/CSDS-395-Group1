@@ -1,0 +1,11 @@
+{
+    "id": "GRAVITY_ANOMALY_ZONE_EFFECTDURATION",
+    "ability": "GRAVITY_ANOMALY_ZONE",
+    "name": "effectDuration",
+    "levels": [
+        {
+            "level": 1,
+            "doubleValue": 5.0
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "id": "GRAVITY_ANOMALY_ZONE_STACKPOLICY",
+    "ability": "GRAVITY_ANOMALY_ZONE",
+    "name": "effectStackPolicy",
+    "levels": []
+}

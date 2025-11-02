@@ -9,17 +9,28 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QAction, QKeySequence
 from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QProxyStyle, QStyle
 
 from jsonTool.ui.tab_viewer import ViewerTab
 from jsonTool.ui.tab_editor import EditorTab
 from jsonTool.core.document import JSONDocument
 from jsonTool.ui.tab_doc import DocTab
-from jsonTool.ui.tab_unziper import UnziperTab
+from jsonTool.ui.tab_unzipper import UnzipperTab
 from jsonTool.ui.tab_splitter import SplitterTab
+from jsonTool.ui.tab_table import TableTab
 
 
-
-
+class FastToolTipStyle(QProxyStyle):
+    """Style proxy for globally accelerated ToolTip:
+       - SH_ToolTip_WakeUpDelay: ToolTip Delay before emergence (milliseconds)
+       - SH_ToolTip_FallAsleepDelay: ToolTip Duration (milliseconds)
+    """
+    def styleHint(self, hint, option=None, widget=None, returnData=None):
+        if hint == QStyle.SH_ToolTip_WakeUpDelay:
+            return 100   # ← Appears on hover for 0.1 seconds (can be turned down again, e.g. 50)
+        if hint == QStyle.SH_ToolTip_FallAsleepDelay:
+            return 20000 # ← Hold for up to 20 seconds to avoid disappearing too quickly (adjustable as needed)
+        return super().styleHint(hint, option, widget, returnData)
 
 
 class MainWindow(QMainWindow):
@@ -27,6 +38,10 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        
+        app = QApplication.instance()
+        if app is not None:
+            app.setStyle(FastToolTipStyle(app.style()))
 
         self.setWindowTitle("JSON Tool")
         self.resize(1000, 650)
@@ -58,13 +73,15 @@ class MainWindow(QMainWindow):
         self.viewer_tab = ViewerTab(self, document=self.document)
         self.editor_tab = EditorTab(self, document=self.document)
         self.splitter_tab = SplitterTab(self)
-        self.unziper_tab = UnziperTab(self)
+        self.unzipper_tab = UnzipperTab(self)
         self.doc_tab = DocTab(self, config_ref=self._config, save_config_cb=self._save_user_config)
+        self.table_tab = TableTab(self, document=self.document)
         self.tabs.addTab(self.viewer_tab, "Viewer")
         self.tabs.addTab(self.editor_tab, "Editor")
         self.tabs.addTab(self.splitter_tab, "Splitter")
-        self.tabs.addTab(self.unziper_tab, "Unziper")
+        self.tabs.addTab(self.unzipper_tab, "Unzipper")
         self.tabs.addTab(self.doc_tab, "Docs")
+        self.tabs.addTab(self.table_tab, "Table")
 
 
 
@@ -73,14 +90,14 @@ class MainWindow(QMainWindow):
 
         # ------------ Bottom busy banner ------------
         self._busy_label = QLabel("", self)
-        self._busy_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        self._busy_label.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
         self.statusBar().addPermanentWidget(self._busy_label, 1)
         self._idle_banner()
         # make status bar taller and text wrap
         self._busy_label.setWordWrap(True)
         self._busy_label.setMinimumHeight(32)
         self._busy_label.setContentsMargins(6, 4, 6, 4)
-        self._busy_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        self._busy_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         self.statusBar().setStyleSheet("QStatusBar { min-height: 32px; }")
 
         self.statusBar().showMessage("Ready")
@@ -88,6 +105,7 @@ class MainWindow(QMainWindow):
         # Inject busy API to tabs
         self.viewer_tab.set_busy_callback(self.set_busy)
         self.editor_tab.set_busy_callback(self.set_busy)
+        self.table_tab.set_busy_callback(self.set_busy)
 
     # ---------------- Config helpers ----------------
     def _load_user_config(self) -> dict:
@@ -257,6 +275,10 @@ class MainWindow(QMainWindow):
                 update_document=False,
                 banner_msg="Saving initial snapshot..."
             )
+            
+            # Ask if user wants to store to database
+            self._ask_store_to_database(p)
+            
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to open file:\n{e}")
         finally:
@@ -430,6 +452,42 @@ class MainWindow(QMainWindow):
     def _action_save_progress(self):
         data = self._collect_current_json()
         self._save_snapshot(data, update_document=True, banner_msg="Saving snapshot...")
+        
+    def _ask_store_to_database(self, file_path: Path):
+        """Ask user if they want to store the JSON file to database"""
+        try:
+            from jsonTool.core.database import get_database_manager
+            
+            reply = QMessageBox.question(
+                self, 
+                "Store to Database", 
+                f"Do you want to store '{file_path.name}' to the database?",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self.set_busy(True, "Storing to database...")
+                
+                # Get current JSON data
+                json_data = self.document.get_data()
+                
+                # Store to database
+                db_manager = get_database_manager()
+                file_index = db_manager.store_json_file(file_path.name, json_data)
+                
+                QMessageBox.information(
+                    self, 
+                    "Success", 
+                    f"File '{file_path.name}' stored to database with index {file_index}"
+                )
+                
+                self.statusBar().showMessage(f"Stored to database: index {file_index}", 5000)
+                
+        except Exception as e:
+            QMessageBox.critical(self, "Database Error", f"Failed to store to database:\n{e}")
+        finally:
+            self.set_busy(False)
 
     def _load_history_at(self, idx: int):
         """
