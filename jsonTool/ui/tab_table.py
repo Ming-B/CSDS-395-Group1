@@ -5,13 +5,39 @@ from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTableView, QHeaderView, QPushButton,
     QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
-    QLabel, QSpinBox, QInputDialog
+    QLabel, QSpinBox, QInputDialog, QStyledItemDelegate, QLineEdit, QStyle
 )
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Slot, Qt, QModelIndex
+from PySide6.QtGui import QPalette
 
 from jsonTool.core.document import JSONDocument
 from jsonTool.core.recent_files import RecentFilesManager
 from jsonTool.ui.models.json_table_model import JsonTableModel
+
+
+
+class SolidEditorDelegate(QStyledItemDelegate):
+    def createEditor(self, parent, option, index):
+        ed = super().createEditor(parent, option, index)
+
+        if isinstance(ed, QLineEdit):
+            ed.setAutoFillBackground(True)
+            pal = ed.palette()
+            pal.setColor(QPalette.Base, option.palette.color(QPalette.Base))
+            pal.setColor(QPalette.Text, option.palette.color(QPalette.Text))
+            ed.setPalette(pal)
+        return ed
+
+    def paint(self, painter, option, index):
+
+        if option.state & QStyle.State_Editing:
+            painter.save()
+            painter.fillRect(option.rect, option.palette.brush(QPalette.Base))
+            painter.restore()
+            return
+        # 其他情况走默认绘制
+        super().paint(painter, option, index)
+
 
 
 class TableTab(QWidget):
@@ -65,7 +91,10 @@ class TableTab(QWidget):
         # Setup model
         self.model = JsonTableModel(self)
         self.table_view.setModel(self.model)
-        
+
+        self._delegate = SolidEditorDelegate(self.table_view)
+        self.table_view.setItemDelegate(self._delegate)
+
         # Table configuration
         self.table_view.setEditTriggers(
             QAbstractItemView.EditTrigger.DoubleClicked

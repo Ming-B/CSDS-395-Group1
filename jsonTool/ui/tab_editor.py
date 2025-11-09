@@ -5,13 +5,111 @@ from pathlib import Path
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTreeView, QHeaderView, QPushButton,
-    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu
+    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
+    QStyledItemDelegate, QLineEdit, QStyle, QLabel
 )
-from PySide6.QtCore import Slot, QModelIndex
+from PySide6.QtCore import Slot, QModelIndex, Qt
+from PySide6.QtGui import QPalette, QFontMetrics
 
 from jsonTool.core.json_model import JsonModel
 from jsonTool.core.document import JSONDocument
 from jsonTool.core.recent_files import RecentFilesManager
+
+
+class CompareEditDelegate(QStyledItemDelegate):
+    """
+    During editing: Embed a "Previous Value" label to the right of the QLineEdit,
+    reserve right margin for the LineEdit,
+    and expand the current column width as needed during editing to prevent the prompt from being obscured by the next column.
+    """
+    def createEditor(self, parent, option, index):
+        view = option.widget          # QTreeView
+        col = index.column()
+
+
+        old_text = index.model().data(index, Qt.DisplayRole)
+        old_text = "" if old_text is None else str(old_text)
+
+
+        edit = QLineEdit(parent)
+        edit.setObjectName("cmpLine")
+
+
+        edit.setAutoFillBackground(True)
+        edit.setAttribute(Qt.WA_OpaquePaintEvent, True)
+        pal = edit.palette()
+        pal.setColor(QPalette.Base, option.palette.color(QPalette.Base))
+        pal.setColor(QPalette.Text, option.palette.color(QPalette.Text))
+        edit.setPalette(pal)
+
+
+        hint = QLabel(edit)
+        hint.setObjectName("oldHint")
+        hint.setText(f"(old: {old_text})")
+        hint.setStyleSheet(
+            "QLabel#oldHint{color:rgba(255,255,255,0.6);font-size:11px;}"
+        )
+        hint.setAttribute(Qt.WA_TransparentForMouseEvents, True)
+
+        fm = hint.fontMetrics()
+        margin = fm.horizontalAdvance(hint.text()) + 10
+        edit.setTextMargins(0, 0, margin, 0)
+
+        def _reposition_hint():
+            r = edit.rect()
+            size = hint.sizeHint()
+            x = r.right() - size.width() - 5
+            y = r.center().y() - size.height() // 2
+            hint.move(max(2, x), max(0, y))
+            hint.resize(size)
+
+        hint.resize(hint.sizeHint())
+        _reposition_hint()
+        edit.resizeEvent = (
+            (lambda orig: (lambda ev: (orig(ev), _reposition_hint())))(edit.resizeEvent)
+        )
+
+        need_px_base = view.columnWidth(col)
+        edit.setProperty("_view", view)
+        edit.setProperty("_col", col)
+        edit.setProperty("_orig_w", need_px_base)
+        edit.setProperty("_margin", margin)
+        edit.setProperty("_hint", hint)
+
+        def _ensure_width():
+            v: QTreeView = edit.property("_view")
+            c: int = edit.property("_col")
+            m: int = edit.property("_margin")
+            fm2 = edit.fontMetrics()
+            need = fm2.horizontalAdvance(edit.text()) + m + 20
+            if need > v.columnWidth(c):
+                v.setColumnWidth(c, need)
+
+            _reposition_hint()
+
+        edit.textChanged.connect(lambda _=None: _ensure_width())
+        _ensure_width()
+
+        return edit
+
+    def setEditorData(self, editor, index):
+        val = index.model().data(index, Qt.EditRole)
+        editor.setText("" if val is None else str(val))
+        editor.selectAll()
+
+    def setModelData(self, editor, model, index):
+        model.setData(index, editor.text(), Qt.EditRole)
+
+    def updateEditorGeometry(self, editor, option, index):
+        editor.setGeometry(option.rect)
+
+    def paint(self, painter, option, index):
+        # 编辑态先清背景，避免旧文字与编辑器叠画
+        if option.state & QStyle.State_Editing:
+            painter.fillRect(option.rect, option.palette.brush(QPalette.Base))
+            return
+        super().paint(painter, option, index)
+
 
 
 class EditorTab(QWidget):
@@ -67,6 +165,15 @@ class EditorTab(QWidget):
         # Model - EDITABLE (keys + values)
         self.model = JsonModel(editable_keys=True, editable_values=True)
         self.tree_view.setModel(self.model)
+
+        header = self.tree_view.header()
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.tree_view.setIndentation(16)
+        self.tree_view.setRootIsDecorated(True)
+        # —— 安装“对照编辑”委托（显示旧值 + 透明问题修复）
+        self._edit_delegate = CompareEditDelegate(self.tree_view)
+        self.tree_view.setItemDelegate(self._edit_delegate)
 
         # Edit triggers: double-click / Enter(F2) / selected-click
         self.tree_view.setEditTriggers(
