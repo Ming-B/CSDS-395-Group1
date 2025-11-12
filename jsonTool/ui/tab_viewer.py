@@ -71,6 +71,8 @@ class ViewerTab(QWidget):
         # 单/双阅读器切换：[ | ]
         self.btn_toggle_double = QPushButton("🪟🪟", self)
         self.btn_toggle_double.setToolTip("Double Windows")
+        self.btn_toggle_save = QPushButton("Save", self)
+        self.btn_toggle_save.setToolTip("Save")
 
         toolbar.addWidget(self.btn_expand_all)
         toolbar.addWidget(self.btn_collapse_all)
@@ -78,6 +80,8 @@ class ViewerTab(QWidget):
         toolbar.addWidget(self.btn_collapse_sel)
         toolbar.addSpacing(8)
         toolbar.addWidget(self.btn_toggle_double)
+        # Add save button right after the double window button
+        toolbar.addWidget(self.btn_toggle_save)
         toolbar.addStretch(1)
         root_layout.addLayout(toolbar)
 
@@ -138,6 +142,7 @@ class ViewerTab(QWidget):
         self.btn_expand_sel.clicked.connect(self._on_expand_selection)
         self.btn_collapse_sel.clicked.connect(self._on_collapse_selection)
         self.btn_toggle_double.clicked.connect(self._toggle_double_mode)
+        self.btn_toggle_save.clicked.connect(self._on_save)
 
         # Reader 顶部 ▼ 菜单（与右栏 recent_files 同步）
         self._rebuild_reader_menu(self.reader1, which=1)
@@ -403,6 +408,43 @@ class ViewerTab(QWidget):
         """由 MainWindow 在加载快照前调用，交由 modelReset 后恢复展开/定位/滚动。"""
         self._pending_restore_state = state or None
 
+    def _ask_store_to_database(self, file_path):
+        file_path = Path(file_path)
+        """Ask user if they want to store the JSON file to storage"""
+        try:
+            from jsonTool.core.database import get_database_manager
+            
+            reply = QMessageBox.question(
+                self, 
+                "Store to Storage", 
+                f"Do you want to store '{file_path.name}' to storage?\n\n(File will be saved to stored_files/ directory)",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes
+            )
+            
+            if reply == QMessageBox.Yes:
+                self._busy(True, "Storing file...")
+                
+                # Get current JSON data
+                json_data = self.document.get_data()
+                
+                # Store to storage
+                db_manager = get_database_manager()
+                file_index = db_manager.store_json_file(file_path.name, json_data)
+                
+                QMessageBox.information(
+                    self, 
+                    "Success", 
+                    f"File '{file_path.name}' stored with index {file_index}\n\nYou can commit and push to share with team."
+                )
+                
+                # self.statusBar().showMessage(f"Stored to storage: index {file_index}", 5000)
+                
+        except Exception as e:
+            QMessageBox.critical(self, "Storage Error", f"Failed to store file:\n{e}")
+        finally:
+            self._busy(False)
+
     # ---------------- Toolbar handlers (act on active tree) ----------------
     @Slot()
     def _on_expand_all(self):
@@ -447,6 +489,16 @@ class ViewerTab(QWidget):
         self._busy(True)
         try:
             self._collapse_subtree_indexed(tv, idx0)
+        finally:
+            self._busy(False)
+
+    @Slot()
+    def _on_save(self):
+        tv = self._active_tree or self.reader1["tree"]
+        idx = tv.currentIndex()
+        fp = getattr(self.document, "file_path", None)
+        try:
+            self._ask_store_to_database(fp)
         finally:
             self._busy(False)
 

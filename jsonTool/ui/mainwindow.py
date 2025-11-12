@@ -277,7 +277,7 @@ class MainWindow(QMainWindow):
             )
             
             # Ask if user wants to store to database
-            self._ask_store_to_database(p)
+            # self._ask_store_to_database(p)
             
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to open file:\n{e}")
