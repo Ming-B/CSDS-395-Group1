@@ -1,3 +1,5 @@
 jsonTool/config/user.json
 jsonTool/workspace/*
 .idea/
+jsonTool/stored_files/files/*
+jsonTool/stored_files/index.json
