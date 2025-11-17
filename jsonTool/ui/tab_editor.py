@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
     QStyledItemDelegate, QLineEdit, QStyle, QLabel
 )
-from PySide6.QtCore import Slot, QModelIndex, Qt
+from PySide6.QtCore import Slot, QModelIndex, Qt, QRect, QPoint
 from PySide6.QtGui import QPalette, QFontMetrics
 
 from jsonTool.core.json_model import JsonModel
@@ -16,81 +16,50 @@ from jsonTool.core.document import JSONDocument
 from jsonTool.core.recent_files import RecentFilesManager
 
 
-class CompareEditDelegate(QStyledItemDelegate):
-    """
-    During editing: Embed a "Previous Value" label to the right of the QLineEdit,
-    reserve right margin for the LineEdit,
-    and expand the current column width as needed during editing to prevent the prompt from being obscured by the next column.
-    """
+class OverlayHintDelegate(QStyledItemDelegate):
+    """编辑时在单元格附近浮出旧值提示，结束后隐藏；并修复编辑重影。"""
+    def __init__(self, view, parent=None):
+        super().__init__(parent)
+        self.view = view  # QTreeView
+    # ---- 创建编辑器 ----
     def createEditor(self, parent, option, index):
-        view = option.widget          # QTreeView
-        col = index.column()
-
-
-        old_text = index.model().data(index, Qt.DisplayRole)
-        old_text = "" if old_text is None else str(old_text)
-
-
-        edit = QLineEdit(parent)
-        edit.setObjectName("cmpLine")
-
-
-        edit.setAutoFillBackground(True)
-        edit.setAttribute(Qt.WA_OpaquePaintEvent, True)
-        pal = edit.palette()
+        # 仅用 QLineEdit，避免重影：编辑器不透明且继承表格调色板
+        editor = QLineEdit(parent)
+        editor.setAutoFillBackground(True)
+        editor.setAttribute(Qt.WA_OpaquePaintEvent, True)
+        pal = editor.palette()
         pal.setColor(QPalette.Base, option.palette.color(QPalette.Base))
         pal.setColor(QPalette.Text, option.palette.color(QPalette.Text))
-        edit.setPalette(pal)
+        editor.setPalette(pal)
 
+        # 旧值文本
+        old_text = index.model().data(index, Qt.DisplayRole)
+        if old_text is None:
+            old_text = ""
 
-        hint = QLabel(edit)
-        hint.setObjectName("oldHint")
-        hint.setText(f"(old: {old_text})")
-        hint.setStyleSheet(
-            "QLabel#oldHint{color:rgba(255,255,255,0.6);font-size:11px;}"
-        )
+        # 创建悬浮提示（挂在 viewport 上，盖住下层内容）
+        hint = QLabel(self.view.viewport())
+        hint.setObjectName("oldValueHint")
+        hint.setText(f"Old: {str(old_text)}")
         hint.setAttribute(Qt.WA_TransparentForMouseEvents, True)
-
-        fm = hint.fontMetrics()
-        margin = fm.horizontalAdvance(hint.text()) + 10
-        edit.setTextMargins(0, 0, margin, 0)
-
-        def _reposition_hint():
-            r = edit.rect()
-            size = hint.sizeHint()
-            x = r.right() - size.width() - 5
-            y = r.center().y() - size.height() // 2
-            hint.move(max(2, x), max(0, y))
-            hint.resize(size)
-
-        hint.resize(hint.sizeHint())
-        _reposition_hint()
-        edit.resizeEvent = (
-            (lambda orig: (lambda ev: (orig(ev), _reposition_hint())))(edit.resizeEvent)
+        hint.setStyleSheet(
+            """
+            QLabel#oldValueHint{
+                background: rgba(30,30,30,0.88);
+                color: rgba(255,255,255,0.92);
+                border: 1px solid rgba(255,255,255,0.25);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+            """
         )
+        hint.hide()  # 几何定位好后再 show
+        editor.setProperty("_overlay_hint", hint)
 
-        need_px_base = view.columnWidth(col)
-        edit.setProperty("_view", view)
-        edit.setProperty("_col", col)
-        edit.setProperty("_orig_w", need_px_base)
-        edit.setProperty("_margin", margin)
-        edit.setProperty("_hint", hint)
-
-        def _ensure_width():
-            v: QTreeView = edit.property("_view")
-            c: int = edit.property("_col")
-            m: int = edit.property("_margin")
-            fm2 = edit.fontMetrics()
-            need = fm2.horizontalAdvance(edit.text()) + m + 20
-            if need > v.columnWidth(c):
-                v.setColumnWidth(c, need)
-
-            _reposition_hint()
-
-        edit.textChanged.connect(lambda _=None: _ensure_width())
-        _ensure_width()
-
-        return edit
+        # 结束编辑时隐藏并删除提示
+        editor.editingFinished.connect(lambda: self._hide_and_delete_hint(editor))
+        return editor
 
     def setEditorData(self, editor, index):
         val = index.model().data(index, Qt.EditRole)
@@ -101,14 +70,57 @@ class CompareEditDelegate(QStyledItemDelegate):
         model.setData(index, editor.text(), Qt.EditRole)
 
     def updateEditorGeometry(self, editor, option, index):
+        # 放置编辑器
         editor.setGeometry(option.rect)
 
+        # 计算并放置浮层（优先放在下面，放不下就放上面；同时做左右/上下越界裁剪）
+        hint: QLabel = editor.property("_overlay_hint")
+        if not hint:
+            return
+
+        # 基于 index 的可视矩形，得到相对 viewport 的坐标
+        cell_rect: QRect = self.view.visualRect(index)
+        hint.adjustSize()
+        size = hint.size()
+        below_pos = QPoint(cell_rect.left(), cell_rect.bottom() + 2)
+        above_pos = QPoint(cell_rect.left(), cell_rect.top() - size.height() - 2)
+
+        # 视口边界
+        vp = self.view.viewport().rect()
+        # 优先尝试放在下面
+        pos = below_pos
+        if pos.y() + size.height() > vp.bottom():
+            pos = above_pos
+        # 左右边界裁剪
+        if pos.x() + size.width() > vp.right():
+            pos.setX(max(vp.left(), vp.right() - size.width()))
+        if pos.x() < vp.left():
+            pos.setX(vp.left())
+
+        hint.move(pos)
+        if not hint.isVisible():
+            hint.show()
+            hint.raise_()
+
+    def destroyEditor(self, editor, index):
+        # 保底清理
+        self._hide_and_delete_hint(editor)
+        return super().destroyEditor(editor, index)
+
     def paint(self, painter, option, index):
-        # 编辑态先清背景，避免旧文字与编辑器叠画
+        # 编辑态只清背景，避免旧文本与编辑器文字叠画
         if option.state & QStyle.State_Editing:
             painter.fillRect(option.rect, option.palette.brush(QPalette.Base))
             return
         super().paint(painter, option, index)
+
+    def _hide_and_delete_hint(self, editor):
+        hint = editor.property("_overlay_hint")
+        if hint:
+            hint.hide()
+            hint.deleteLater()
+            editor.setProperty("_overlay_hint", None)
+
 
 
 
@@ -171,8 +183,8 @@ class EditorTab(QWidget):
         header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         self.tree_view.setIndentation(16)
         self.tree_view.setRootIsDecorated(True)
-        # —— 安装“对照编辑”委托（显示旧值 + 透明问题修复）
-        self._edit_delegate = CompareEditDelegate(self.tree_view)
+
+        self._edit_delegate = OverlayHintDelegate(self.tree_view)
         self.tree_view.setItemDelegate(self._edit_delegate)
 
         # Edit triggers: double-click / Enter(F2) / selected-click

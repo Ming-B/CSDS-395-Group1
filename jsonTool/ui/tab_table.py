@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
     QLabel, QSpinBox, QInputDialog, QStyledItemDelegate, QLineEdit, QStyle
 )
-from PySide6.QtCore import Slot, Qt, QModelIndex
+from PySide6.QtCore import Slot, Qt, QModelIndex, QPoint
 from PySide6.QtGui import QPalette
 
 from jsonTool.core.document import JSONDocument
@@ -16,27 +16,108 @@ from jsonTool.ui.models.json_table_model import JsonTableModel
 
 
 
-class SolidEditorDelegate(QStyledItemDelegate):
-    def createEditor(self, parent, option, index):
-        ed = super().createEditor(parent, option, index)
+class OverlayHintDelegate(QStyledItemDelegate):
+    """
+    Table 编辑委托：
+    - 解决编辑时文字重影
+    - 编辑时在单元格附近浮出“旧值：xxx”提示，结束编辑后自动消失
+    """
+    def __init__(self, view, parent=None):
+        super().__init__(parent)
+        self.view = view  # QTableView
 
-        if isinstance(ed, QLineEdit):
-            ed.setAutoFillBackground(True)
-            pal = ed.palette()
-            pal.setColor(QPalette.Base, option.palette.color(QPalette.Base))
-            pal.setColor(QPalette.Text, option.palette.color(QPalette.Text))
-            ed.setPalette(pal)
-        return ed
+    def createEditor(self, parent, option, index):
+
+        editor = QLineEdit(parent)
+        editor.setAutoFillBackground(True)
+        editor.setAttribute(Qt.WA_OpaquePaintEvent, True)
+        pal = editor.palette()
+        pal.setColor(QPalette.Base, option.palette.color(QPalette.Base))
+        pal.setColor(QPalette.Text, option.palette.color(QPalette.Text))
+        editor.setPalette(pal)
+
+        # Old
+        old_text = index.model().data(index, Qt.DisplayRole)
+        if old_text is None:
+            old_text = ""
+
+        hint = QLabel(self.view.viewport())
+        hint.setObjectName("tableOldValueHint")
+        hint.setText(f"Old: {str(old_text)}")
+        hint.setAttribute(Qt.WA_TransparentForMouseEvents, True)
+        hint.setStyleSheet("""
+            QLabel#tableOldValueHint{
+                background: rgba(30,30,30,0.88);
+                color: rgba(255,255,255,0.92);
+                border: 1px solid rgba(255,255,255,0.25);
+                border-radius: 6px;
+                padding: 6px 8px;
+                font-size: 11px;
+            }
+        """)
+        hint.hide()
+
+        editor.setProperty("_overlay_hint", hint)
+        editor.editingFinished.connect(lambda: self._hide_and_delete_hint(editor))
+        return editor
+
+    def setEditorData(self, editor, index):
+        val = index.model().data(index, Qt.EditRole)
+        editor.setText("" if val is None else str(val))
+        editor.selectAll()
+
+    def setModelData(self, editor, model, index):
+        model.setData(index, editor.text(), Qt.EditRole)
+
+    def updateEditorGeometry(self, editor, option, index):
+        editor.setGeometry(option.rect)
+
+        # Floating layer position: Place it directly below the cell first; if space is insufficient, place it above instead, and apply border cropping.
+        hint = editor.property("_overlay_hint")
+        if not hint:
+            return
+
+        cell_rect = self.view.visualRect(index)
+        hint.adjustSize()
+        size = hint.size()
+        vp = self.view.viewport().rect()
+
+        # Lower position
+        below = cell_rect.bottomLeft() + QPoint(0, 2)
+        # Upper Position (Alternative)
+        above = cell_rect.topLeft() - QPoint(0, size.height() + 2)
+
+        pos = below
+        if pos.y() + size.height() > vp.bottom():
+            pos = above
+
+        if pos.x() + size.width() > vp.right():
+            pos.setX(max(vp.left(), vp.right() - size.width()))
+        if pos.x() < vp.left():
+            pos.setX(vp.left())
+
+        hint.move(pos)
+        if not hint.isVisible():
+            hint.show()
+            hint.raise_()
+
+    def destroyEditor(self, editor, index):
+        self._hide_and_delete_hint(editor)
+        return super().destroyEditor(editor, index)
 
     def paint(self, painter, option, index):
-
         if option.state & QStyle.State_Editing:
-            painter.save()
             painter.fillRect(option.rect, option.palette.brush(QPalette.Base))
-            painter.restore()
             return
-        # 其他情况走默认绘制
         super().paint(painter, option, index)
+
+    def _hide_and_delete_hint(self, editor):
+        hint = editor.property("_overlay_hint")
+        if hint:
+            hint.hide()
+            hint.deleteLater()
+            editor.setProperty("_overlay_hint", None)
+
 
 
 
@@ -92,7 +173,7 @@ class TableTab(QWidget):
         self.model = JsonTableModel(self)
         self.table_view.setModel(self.model)
 
-        self._delegate = SolidEditorDelegate(self.table_view)
+        self._delegate = OverlayHintDelegate(self.table_view, self.table_view)
         self.table_view.setItemDelegate(self._delegate)
 
         # Table configuration
