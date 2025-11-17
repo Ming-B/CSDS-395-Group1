@@ -5,13 +5,18 @@ from pathlib import Path
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTreeView, QHeaderView, QPushButton,
-    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu
+    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
+    QStyledItemDelegate, QLineEdit, QStyle, QLabel
 )
-from PySide6.QtCore import Slot, QModelIndex
+from PySide6.QtCore import Slot, QModelIndex, Qt, QRect, QPoint
+from PySide6.QtGui import QPalette, QFontMetrics
 
 from jsonTool.core.json_model import JsonModel
 from jsonTool.core.document import JSONDocument
 from jsonTool.core.recent_files import RecentFilesManager
+
+from jsonTool.ui.models.delegates import OverlayHintDelegate
+
 
 
 class EditorTab(QWidget):
@@ -67,6 +72,15 @@ class EditorTab(QWidget):
         # Model - EDITABLE (keys + values)
         self.model = JsonModel(editable_keys=True, editable_values=True)
         self.tree_view.setModel(self.model)
+
+        header = self.tree_view.header()
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.tree_view.setIndentation(16)
+        self.tree_view.setRootIsDecorated(True)
+
+        self._edit_delegate = OverlayHintDelegate(self.tree_view)
+        self.tree_view.setItemDelegate(self._edit_delegate)
 
         # Edit triggers: double-click / Enter(F2) / selected-click
         self.tree_view.setEditTriggers(

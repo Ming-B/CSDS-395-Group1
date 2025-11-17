@@ -5,13 +5,17 @@ from pathlib import Path
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTableView, QHeaderView, QPushButton,
     QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu,
-    QLabel, QSpinBox, QInputDialog
+    QLabel, QSpinBox, QInputDialog, QStyledItemDelegate, QLineEdit, QStyle
 )
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Slot, Qt, QModelIndex, QPoint
+from PySide6.QtGui import QPalette
 
 from jsonTool.core.document import JSONDocument
 from jsonTool.core.recent_files import RecentFilesManager
 from jsonTool.ui.models.json_table_model import JsonTableModel
+from jsonTool.ui.models.delegates import OverlayHintDelegate
+
+
 
 
 class TableTab(QWidget):
@@ -65,7 +69,10 @@ class TableTab(QWidget):
         # Setup model
         self.model = JsonTableModel(self)
         self.table_view.setModel(self.model)
-        
+
+        self._delegate = OverlayHintDelegate(self.table_view)
+        self.table_view.setItemDelegate(self._delegate)
+
         # Table configuration
         self.table_view.setEditTriggers(
             QAbstractItemView.EditTrigger.DoubleClicked
