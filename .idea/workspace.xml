@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c61636d5-c8d2-4887-a5d0-057561edc4e6" name="Changes" comment="The symbol in the button has been modified.&#10;The delay before the prompt appears has been reduced.">
+    <list default="true" id="c61636d5-c8d2-4887-a5d0-057561edc4e6" name="Changes" comment="Optimize text layer overlapping issues during editing">
+      <change afterPath="$PROJECT_DIR$/jsonTool/ui/models/delegates.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsonTool/ui/tab_editor.py" beforeDir="false" afterPath="$PROJECT_DIR$/jsonTool/ui/tab_editor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jsonTool/ui/tab_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/jsonTool/ui/tab_table.py" afterDir="false" />
@@ -13,6 +14,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
     <envs>
@@ -107,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1760117601222</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Optimize text layer overlapping issues during editing">
+      <created>1763407000053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763407000053</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,11 +130,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="The symbol in the button has been modified.&#10;The delay before the prompt appears has been reduced." />
-    <option name="LAST_COMMIT_MESSAGE" value="The symbol in the button has been modified.&#10;The delay before the prompt appears has been reduced." />
+    <MESSAGE value="Optimize text layer overlapping issues during editing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimize text layer overlapping issues during editing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSDS395Project$tab_unzipper.coverage" NAME="tab_unzipper Coverage Results" MODIFIED="1760400958276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui" />
-    <SUITE FILE_PATH="coverage/CSDS_395_Group6_dev$main.coverage" NAME="main Coverage Results" MODIFIED="1763406398668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool" />
+    <SUITE FILE_PATH="coverage/CSDS_395_Group6_dev$main.coverage" NAME="main Coverage Results" MODIFIED="1763407375452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool" />
     <SUITE FILE_PATH="coverage/CSDS395Project$json_table_model.coverage" NAME="json_table_model Coverage Results" MODIFIED="1759970301257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui/models" />
     <SUITE FILE_PATH="coverage/CSDS395Project$mainwindow.coverage" NAME="mainwindow Coverage Results" MODIFIED="1760401142209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool/ui" />
     <SUITE FILE_PATH="coverage/CSDS395Project$main.coverage" NAME="main Coverage Results" MODIFIED="1760563022067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/jsonTool" />
