@@ -604,6 +604,7 @@ class TableTab(QWidget):
 
     # -----列：删除所有列-----
     def _delete_all_columns(self):
+        self.table.setRowCount(0)
         """删除所有列（清空所有装载的属性）。"""
         while self.table.columnCount() > 0:
             self.table.removeColumn(0)
