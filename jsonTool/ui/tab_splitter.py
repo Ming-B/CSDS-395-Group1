@@ -11,10 +11,12 @@ from PySide6.QtCore import Qt, QModelIndex, QItemSelection, QItemSelectionModel,
 from PySide6.QtWidgets import (
     QWidget, QSplitter, QVBoxLayout, QHBoxLayout, QPushButton, QTreeView,
     QHeaderView, QTableWidget, QTableWidgetItem, QFileDialog, QMessageBox, QFrame,
-    QLabel
+    QLabel, QToolButton, QMenu
 )
 
 from jsonTool.core.json_model import JsonModel
+from jsonTool.core.database import get_database_manager
+
 
 
 # ----------------------------- Helper: custom QTreeView with SHIFT same-parent range -----------------------------
@@ -99,6 +101,8 @@ class SplitterTab(QWidget):
         self._current_data: Any = None
         self._anon_counter = 1  # for unnamed parents (six-digit base)
         self._branch_counters: Dict[str, int] = {}  # base_name -> last branch idx
+        self.db_mgr = get_database_manager()
+        self._current_file = None
 
         # --- Root Splitter ---
         root = QVBoxLayout(self)
@@ -113,12 +117,21 @@ class SplitterTab(QWidget):
 
         # Top toolbar (Open JSON + Expand/Collapse)
         left_toolbar = QHBoxLayout()
-        self.btn_open = QPushButton("Open JSON...", self.left_panel)
+        self.title_btn = QPushButton("(No file)", self.left_panel)
+        self.title_btn.setEnabled(False)
+        self.menu_btn = QToolButton(self.left_panel)
+        self.menu_btn.setText("▼")
+        self.menu_btn.setFixedWidth(28)
+        self.menu_btn.setToolTip("Choose a JSON to view")
+        self.menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+
+        left_toolbar.addWidget(self.title_btn)
+        left_toolbar.addWidget(self.menu_btn)
         self.btn_expand_all = QPushButton("⬇️📁", self.left_panel); self.btn_expand_all.setToolTip("Expand All")
         self.btn_collapse_all = QPushButton("⬆️📁", self.left_panel); self.btn_collapse_all.setToolTip("Collapse All")
         self.btn_expand_sel = QPushButton("➡️📄", self.left_panel); self.btn_expand_sel.setToolTip("Expand Selection")
         self.btn_collapse_sel = QPushButton("⬅️📄", self.left_panel); self.btn_collapse_sel.setToolTip("Collapse Selection")
-        left_toolbar.addWidget(self.btn_open)
+        # left_toolbar.addWidget(self.btn_open)
         left_toolbar.addSpacing(12)
         left_toolbar.addWidget(self.btn_expand_all)
         left_toolbar.addWidget(self.btn_collapse_all)
@@ -174,7 +187,7 @@ class SplitterTab(QWidget):
         self.splitter.setSizes([800, 500])
 
         # --- Connections ---
-        self.btn_open.clicked.connect(self._action_open_json)
+        # self.btn_open.clicked.connect(self._action_open_json)
         self.btn_expand_all.clicked.connect(self._on_expand_all)
         self.btn_collapse_all.clicked.connect(self._on_collapse_all)
         self.btn_expand_sel.clicked.connect(self._on_expand_selection)
@@ -187,6 +200,8 @@ class SplitterTab(QWidget):
         self._hint = QLabel("Open a JSON file to begin.", self.left_panel)
         self._hint.setStyleSheet("color:#666;")
         left_v.addWidget(self._hint, 0)
+        self._rebuild_splitter_menu()
+
 
     # ===================== Left: JSON open / view controls =====================
     def _action_open_json(self):
@@ -382,6 +397,50 @@ class SplitterTab(QWidget):
             if self.table.cellWidget(r, 2) is btn:
                 self.table.removeRow(r)
                 break
+
+    def _rebuild_splitter_menu(self):
+        menu = QMenu(self.menu_btn)
+        files = self.db_mgr.get_all_files()
+
+        if not files:
+            a = menu.addAction("(no stored files)")
+            a.setEnabled(False)
+        else:
+            for file_info in files:
+                name = file_info["file_name"]
+                index = file_info["index"]
+                act = menu.addAction(name)
+                act.setToolTip(f"Index: {index}")
+                act.triggered.connect(
+                    lambda checked=False, idx=index: self._load_json_from_db(idx)
+                )
+
+        self.menu_btn.setMenu(menu)
+    
+    def _load_json_from_db(self, index: int):
+        file_data = self.db_mgr.get_file_by_index(index)
+        if not file_data:
+            QMessageBox.warning(self, "Load Failed", "Unable to load file from database.")
+            return
+
+        json_data = file_data["data"]
+        file_name = file_data["file_name"]
+
+        try:
+            self._current_data = json_data
+            self.model.load(json_data)
+            self._hint.hide()
+            self.tree.reset_anchor()
+            self.tree.expandToDepth(0)
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to load file:\n{file_name}\n\n{e}")
+            return
+        
+        # update title
+        self.title_btn.setText(file_name)
+        self._current_file = file_name
+
+        print(f"[Splitter] Loaded file {file_name} (index {index})")
 
     # ===================== Export =====================
     def _get_by_path(self, data: Any, path: Tuple[Any, ...]) -> Any:
