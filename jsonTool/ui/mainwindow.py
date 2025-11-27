@@ -481,6 +481,13 @@ class MainWindow(QMainWindow):
                     "Success", 
                     f"File '{file_path.name}' stored with index {file_index}\n\nYou can commit and push to share with team."
                 )
+
+                # ✅ Refresh both tabs (force Viewer and Editor to reload)
+                self.document.set_data(self.document.get_data())
+                self.viewer_tab._refresh_stored_sidebar()
+                self.editor_tab._rebuild_editor_menu()
+                QApplication.processEvents()
+
                 
                 self.statusBar().showMessage(f"Stored to storage: index {file_index}", 5000)
                 

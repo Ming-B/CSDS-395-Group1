@@ -76,6 +76,10 @@ class DatabaseManager:
         try:
             # Load index
             index_data = self._load_index()
+
+            for f in index_data["files"]:
+                if f["file_name"] == file_name:
+                    raise ValueError(f"A file with the name '{file_name}' already exists.")
             
             # Get next index
             file_index = index_data["next_index"]
@@ -111,7 +115,7 @@ class DatabaseManager:
             logger.error(f"Failed to store JSON file: {e}")
             raise
     
-    def get_json_by_index(self, index: int) -> Dict[str, Any]:
+    def get_file_by_index(self, index: int) -> Dict[str, Any]:
         """
         Retrieve JSON data by index
         
@@ -152,6 +156,66 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Failed to retrieve JSON data: {e}")
             raise
+
+    def edit_json_file(self, index: int, new_json_data: Any) -> bool:
+        """
+        Edit the stored JSON file identified by `index`, replacing its contents.
+
+        Args:
+            index: The index of the JSON file (as in index.json)
+            new_json_data: The new JSON data (must be JSON serializable)
+
+        Returns:
+            True if the update succeeded, False otherwise.
+        """
+        try:
+            # Load index metadata
+            index_data = self._load_index()
+
+            # Find the file metadata for this index
+            file_info = None
+            for f in index_data["files"]:
+                if f["index"] == index:
+                    file_info = f
+                    break
+
+            if file_info is None:
+                logger.error(f"No file found in index for index {index}")
+                return False
+
+            stored_filename = file_info.get("stored_file")
+            if not stored_filename:
+                logger.error(f"Metadata for index {index} is missing stored_file name")
+                return False
+
+            # Build full path to the stored JSON file
+            file_path = self.files_dir / stored_filename
+            if not file_path.exists():
+                logger.error(f"Stored file does not exist: {file_path}")
+                return False
+
+            # Write (overwrite) the JSON data
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(new_json_data, f, indent=2, ensure_ascii=False)
+
+            # Update metadata in index
+            file_info["record_count"] = (len(new_json_data) 
+                                         if isinstance(new_json_data, (list, dict)) 
+                                         else 1)
+            file_info["stored_at"] = datetime.now().isoformat()
+
+            # Optionally: you could also track a "last_modified" field separately
+
+            # Save updated index metadata
+            self._save_index(index_data)
+
+            logger.info(f"Edited JSON file {index} at {file_path}")
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to edit JSON file {index}: {e}")
+            return False
+            
     
     def get_all_files(self) -> List[Dict[str, Any]]:
         """
