@@ -20,7 +20,6 @@ from PySide6.QtCore import (
 )
 from PySide6.QtGui import QAction, QPainter
 from PySide6.QtWidgets import QStyleOptionViewItem
-
 from PySide6.QtWidgets import (
     QWidget,
     QSplitter,
@@ -36,10 +35,13 @@ from PySide6.QtWidgets import (
     QAbstractItemView,
     QMenu,
     QStyledItemDelegate,
+    QToolButton
 )
 
 # 按要求使用该导入路径
 from jsonTool.core.json_model import JsonModel
+from jsonTool.core.document import JSONDocument
+from jsonTool.core.database import get_database_manager
 
 
 # ======================== 绘制委托：为“已确认属性”上色为绿色 ========================
@@ -151,6 +153,7 @@ class TableTab(QWidget):
             ConfirmHighlightDelegate(self._index_is_confirmed, self.tree)
         )
 
+        self.db_mgr = get_database_manager()
         # 监听 currentIndex 变化，用于区分“是否在确认属性后显式选择了范围结构”
         self.tree.selectionModel().currentChanged.connect(self._on_tree_current_changed)
 
@@ -169,6 +172,13 @@ class TableTab(QWidget):
         self.table.horizontalHeader().setSectionsMovable(True)
 
         # 顶部工具栏
+        self.title_btn = QPushButton("(No file)", self)
+        self.title_btn.setEnabled(False)  # 只用来显示名称
+        self.menu_btn = QToolButton(self)
+        self.menu_btn.setText("▼")
+        self.menu_btn.setFixedWidth(28)
+        self.menu_btn.setToolTip("Choose a file to edit")
+        self.menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)  # 点击即弹出
         self.btn_export = QPushButton("Export Excel", self)
         self.btn_fit = QPushButton("Fit", self)
         self.btn_select_attr = QPushButton("Selected Attribute", self)
@@ -200,6 +210,8 @@ class TableTab(QWidget):
                 self.json_model.load(self.document.get_data())
             self.document.dataChanged.connect(self.on_document_changed)
 
+        self._rebuild_table_menu()
+
     # -----布局构建-----
     def _build_layout(self):
         """搭建 UI：工具栏 + 左右分栏（支持拖拽分隔）。"""
@@ -207,6 +219,8 @@ class TableTab(QWidget):
 
         # 工具栏（仅保留指定按钮）
         bar = QHBoxLayout()
+        bar.addWidget(self.title_btn, 1)
+        bar.addWidget(self.menu_btn, 0)
         bar.addWidget(self.btn_export)
         bar.addWidget(self.btn_fit)
         bar.addSpacing(12)
@@ -272,6 +286,7 @@ class TableTab(QWidget):
             # 范围选择状态也一起重置
             self._reset_range_state()
             self.tree.viewport().update()
+            self._rebuild_table_menu()
         finally:
             self._busy(False)
 
@@ -337,6 +352,55 @@ class TableTab(QWidget):
             elif p is not parent:
                 return None
         return parent
+    
+    def _update_title_from_document(self):
+        fp = getattr(self.document, "file_path", None)
+        self._current_file = fp if isinstance(fp, str) else None
+        self.title_btn.setText(Path(fp).name if fp else "(No file)")
+    
+    def _rebuild_table_menu(self):
+        """Rebuild dropdown menu for the editor using database files."""
+        menu = QMenu(self.menu_btn)
+        files = self.db_mgr.get_all_files()
+
+        if not files:
+            a = menu.addAction("(no stored files)")
+            a.setEnabled(False)
+        else:
+            for file_info in files:
+                name = file_info["file_name"]
+                index = file_info["index"]
+                act = menu.addAction(name)
+                act.setToolTip(f"Index: {index}")
+                act.triggered.connect(
+                    lambda checked=False, idx=index: self._choose_file_for_table_by_index(1, idx)
+                )
+        self.menu_btn.setMenu(menu)
+                
+    def _choose_file_for_table_by_index(self, which: int, index: int):
+        """Load a JSON file from the database into the editor."""
+        file_data = self.db_mgr.get_file_by_index(index)
+        if not file_data:
+            QMessageBox.warning(self, "Load Failed", "Unable to load file from database.")
+            return
+
+        json_data = file_data["data"]
+        file_name = file_data["file_name"]
+
+        # --- Update model ---
+        self.json_model.load(json_data)
+
+        if self.document is None:
+            self.document = JSONDocument()  # create one if missing
+            
+        self.document.set_data(self.json_model.to_json())
+        self.document.file_path = file_name  # <-- set this!
+
+        # --- Update title ---
+        self.title_btn.setText(file_name)
+        self._current_file = file_name
+
+        print(f"[Editor] Loaded file {file_name} (index {index})")
 
     def _reset_range_state(self):
         """重置“范围选择”状态。"""
