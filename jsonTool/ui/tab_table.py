@@ -20,7 +20,6 @@ from PySide6.QtCore import (
 )
 from PySide6.QtGui import QAction, QPainter
 from PySide6.QtWidgets import QStyleOptionViewItem
-
 from PySide6.QtWidgets import (
     QWidget,
     QSplitter,
