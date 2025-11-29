@@ -5,7 +5,7 @@ from pathlib import Path
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTreeView, QHeaderView, QPushButton,
-    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu, QInputDialog,
+    QMessageBox, QApplication, QAbstractItemView, QToolButton, QMenu, QInputDialog
     QStyledItemDelegate, QLineEdit, QStyle, QLabel
 )
 from PySide6.QtCore import Slot, QModelIndex, Qt, QRect, QPoint
