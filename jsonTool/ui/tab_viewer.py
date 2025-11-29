@@ -11,16 +11,12 @@ from PySide6.QtCore import Slot, QModelIndex, Qt
 
 from jsonTool.core.json_model import JsonModel
 from jsonTool.core.document import JSONDocument
-from jsonTool.ui.tab_editor import EditorTab
-from jsonTool.ui.tab_splitter import SplitterTab
-from jsonTool.ui.tab_table import TableTab
+
 from jsonTool.core.recent_files import RecentFilesManager
 from jsonTool.core.database import get_database_manager
-from PySide6.QtCore import Signal
 
 
 class ViewerTab(QWidget):
-    filesChanged = Signal()
     """Viewer tab: read-only tree with local expand/collapse toolbar, single/double readers,
     right-side recent file list, per-reader file chooser, and view-state preservation.
 
@@ -274,7 +270,6 @@ class ViewerTab(QWidget):
         """Remove file from database and refresh sidebar."""
         self.db_mgr.delete_json_by_index(index)
         self._refresh_stored_sidebar()
-        self.filesChanged.emit()
 
     # ---------------- Refresh sidebar ----------------
     def _refresh_stored_sidebar(self):

@@ -87,7 +87,6 @@ class MainWindow(QMainWindow):
 
         # ------------ Menu and left-corner buttons ------------
         self._build_menu_and_top_buttons()
-        self.viewer_tab.filesChanged.connect(self.refresh_all_menus)
 
         # ------------ Bottom busy banner ------------
         self._busy_label = QLabel("", self)
@@ -211,17 +210,6 @@ class MainWindow(QMainWindow):
 
         # Initial state
         self._refresh_history_buttons()
-
-    def refresh_all_menus(self):
-        for i in range(self.tabs.count()):
-            tab = self.tabs.widget(i)
-            if hasattr(tab, "_rebuild_editor_menu"):
-                tab._rebuild_editor_menu()
-            if hasattr(tab, "_rebuild_splitter_menu"):
-                tab._rebuild_splitter_menu()
-            if hasattr(tab, "_rebuild_table_menu"):
-                tab._rebuild_table_menu()
-
 
     # ---------------- Busy Banner API ----------------
     # ---------------- Busy Banner API ----------------
@@ -498,7 +486,6 @@ class MainWindow(QMainWindow):
                 self.document.set_data(self.document.get_data())
                 self.viewer_tab._refresh_stored_sidebar()
                 self.editor_tab._rebuild_editor_menu()
-                self.splitter_tab._rebuild_splitter_menu()
                 QApplication.processEvents()
 
                 
