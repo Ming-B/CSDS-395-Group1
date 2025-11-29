@@ -1,6 +1,6 @@
 # ui/tab_table.py
 # ------------------------------------------------------------
-# 新版 Table 标签页：从 JSON 手动选择属性，根据结构上下文匹配相似项，扁平化为二维表，并导出为 Excel
+# new
 # ------------------------------------------------------------
 
 from __future__ import annotations
@@ -121,6 +121,7 @@ class TableTab(QWidget):
     """Table 标签页：左侧 JSON 选择属性，右侧表格扁平化视图，支持导出 Excel。"""
 
     # -----初始化-----
+    # -----初始化-----
     def __init__(self, parent=None, document: Any | None = None):
         """初始化 UI、模型、状态。"""
         super().__init__(parent)
@@ -140,10 +141,18 @@ class TableTab(QWidget):
         # 已确认属性的“共同父节点”的绝对路径
         self._confirmed_subroot_abs_path: Optional[List[Any]] = None
 
+        # 在一次“确认属性”之后，是否正在等待用户选择范围结构
+        self._waiting_for_range_choice: bool = False
+        # 在本轮“确认属性”之后，用户是否已经主动切换过一次 currentIndex（即显式点选了范围）
+        self._range_chosen: bool = False
+
         # 为 TreeView 安装绿色高亮绘制委托
         self.tree.setItemDelegate(
             ConfirmHighlightDelegate(self._index_is_confirmed, self.tree)
         )
+
+        # 监听 currentIndex 变化，用于区分“是否在确认属性后显式选择了范围结构”
+        self.tree.selectionModel().currentChanged.connect(self._on_tree_current_changed)
 
         # 右侧表格视图
         self.table = QTableWidget(self)
@@ -243,6 +252,7 @@ class TableTab(QWidget):
             self._set_busy_cb(on, msg)
 
     # ======================== 文档数据变化 ========================
+    # ======================== 文档数据变化 ========================
     @Slot(object)
     def on_document_changed(self, data):
         """当全局文档改变：刷新左侧 JSON；可选择是否清空旧表格视图。"""
@@ -259,6 +269,8 @@ class TableTab(QWidget):
             self._confirmed_attr_relpaths.clear()
             self._confirmed_attr_headers.clear()
             self._confirmed_subroot_abs_path = None
+            # 范围选择状态也一起重置
+            self._reset_range_state()
             self.tree.viewport().update()
         finally:
             self._busy(False)
@@ -326,6 +338,17 @@ class TableTab(QWidget):
                 return None
         return parent
 
+    def _reset_range_state(self):
+        """重置“范围选择”状态。"""
+        self._waiting_for_range_choice = False
+        self._range_chosen = False
+
+    def _on_tree_current_changed(self, current: QModelIndex, previous: QModelIndex):
+        """当确认完属性后，用户再次切换 TreeView 当前节点时，视为显式选择了范围。"""
+        if self._waiting_for_range_choice:
+            self._range_chosen = True
+
+    # ======================== 按钮：确认属性 ========================
     # ======================== 按钮：确认属性 ========================
     @Slot()
     def _action_confirm_selected_attributes(self):
@@ -387,14 +410,26 @@ class TableTab(QWidget):
         self._confirmed_attr_headers = headers
         self._confirmed_attr_paths = set(abs_paths_tuples)
 
+        # 每次重新确认属性，都重新进入“等待范围选择”的状态
+        self._reset_range_state()
+        # 从现在开始，只要 currentIndex 再发生一次变化，就视为显式选择了范围
+        self._waiting_for_range_choice = True
+
         # 清掉当前（蓝色）选择，让绿色高亮可见
         self.tree.clearSelection()
         self.tree.viewport().update()
 
     # ======================== 按钮：添加到表格 ========================
+    # ======================== 按钮：添加到表格 ========================
     @Slot()
     def _action_add_to_table(self):
-        """选择一个父级容器（[] 或 {}），把与已确认属性同层的所有“兄弟子结构”展平到表格。"""
+        """根据当前状态，将已确认属性追加到右侧表格。
+
+        两种模式：
+        1）如果在“确认属性”之后，用户没有再次点选范围结构，则只追加当前这一个结构为一行；
+        2）如果在“确认属性”之后，用户又点选了某个数组/对象范围，则按原有逻辑，
+           在该范围下枚举所有“兄弟子结构”，批量展开为多行。
+        """
         if (
             not self._confirmed_attr_relpaths
             or self._confirmed_subroot_abs_path is None
@@ -404,85 +439,108 @@ class TableTab(QWidget):
             )
             return
 
-        # 当前索引或向上找到最近容器
-        cur = self._index0(self.tree.currentIndex())
-        if not cur.isValid():
-            QMessageBox.information(
-                self, "Info", "Please click a container (array or object) as the range."
-            )
-            return
-
-        container_idx = self._find_nearest_container(cur)
-        if container_idx is None:
-            QMessageBox.warning(
-                self, "Invalid range", "Please select an array or object as the range."
-            )
-            return
-
-        container_abs = self._index_to_path(container_idx)
-        subroot_abs = self._confirmed_subroot_abs_path
-
-        # 容器必须是共同父的祖先（向上递归）
-        if not self._is_prefix(container_abs, subroot_abs):
-            QMessageBox.warning(
-                self,
-                "Invalid range",
-                "The chosen range must be an ancestor of the confirmed attributes' parent.",
-            )
-            return
-
-        # 容器 -> 共同父 的相对路径
-        rel_from_container = subroot_abs[len(container_abs) :]  # 可能为 []
-
-        # 第一个“变化维度”：数组索引或对象键；若为空，则“共同父”即容器本身
-        if rel_from_container:
-            first = rel_from_container[0]
-            rel_tail = rel_from_container[1:]
-            vary_kind = "list" if isinstance(first, int) else "dict"
-        else:
-            rel_tail = []
-            vary_kind = self._container_kind(container_idx)
-
-        # 确保列存在
-        col_map = self._ensure_columns(
-            self._confirmed_attr_headers, self._confirmed_attr_relpaths
-        )
-
-        # 遍历兄弟子结构
         data_root = self.json_model.to_json()
+        subroot_abs = self._confirmed_subroot_abs_path
         rows_added = 0
 
-        if vary_kind == "list":
-            container_obj = self._get_by_path_safe(data_root, container_abs)
-            if not isinstance(container_obj, list):
-                QMessageBox.warning(
-                    self, "Invalid range", "The chosen range is not an array."
-                )
-                return
-            for i in range(len(container_obj)):
-                base_path = container_abs + [i] + rel_tail
-                self._append_row_by_relpaths(data_root, base_path, col_map)
-                rows_added += 1
+        # ---------- 决定使用哪种模式 ----------
+        use_single_mode = False
+        container_idx: Optional[QModelIndex] = None
+        container_abs: Optional[List[Any]] = None
 
-        elif vary_kind == "dict":
-            container_obj = self._get_by_path_safe(data_root, container_abs)
-            if not isinstance(container_obj, dict):
-                QMessageBox.warning(
-                    self, "Invalid range", "The chosen range is not an object."
-                )
-                return
-            for k in list(container_obj.keys()):
-                base_path = container_abs + [k] + rel_tail
-                self._append_row_by_relpaths(data_root, base_path, col_map)
-                rows_added += 1
+        if self._range_chosen:
+            # 用户在确认属性之后有显式切换过一次 currentIndex，说明想选一个“范围”
+            cur = self._index0(self.tree.currentIndex())
+            if cur.isValid():
+                container_idx = self._find_nearest_container(cur)
 
+            if container_idx is None:
+                # 找不到任何容器（典型情况：整个 JSON 结构很扁平），
+                # 自动回退为单结构模式，避免原来的错误提示。
+                use_single_mode = True
+            else:
+                container_abs = self._index_to_path(container_idx)
+                # 容器必须是“共同父节点”的祖先，否则仍然视为非法范围（保持原有行为）
+                if not self._is_prefix(container_abs, subroot_abs):
+                    QMessageBox.warning(
+                        self,
+                        "Invalid range",
+                        "The chosen range must be an ancestor of the confirmed attributes' parent.",
+                    )
+                    self._reset_range_state()
+                    return
         else:
-            QMessageBox.warning(self, "Invalid range", "Unsupported range kind.")
-            return
+            # 用户确认属性之后，直接点击了“Add Attribute”，
+            # 即按照你描述的“跳过第三步”的逻辑：只添加当前这一个结构。
+            use_single_mode = True
 
-        # 重置左侧高亮
+        # ---------- 模式一：仅添加当前结构的一行 ----------
+        if use_single_mode:
+            # 列头按已确认属性创建/复用
+            col_map = self._ensure_columns(
+                self._confirmed_attr_headers, self._confirmed_attr_relpaths
+            )
+            # base_path 直接使用 LCA，即“该结构自身”的绝对路径
+            base_path = subroot_abs
+            self._append_row_by_relpaths(data_root, base_path, col_map)
+            rows_added = 1
+
+        # ---------- 模式二：按范围批量展开（原有逻辑保持不变） ----------
+        else:
+            assert container_abs is not None
+
+            # 容器 -> 共同父 的相对路径
+            rel_from_container = subroot_abs[len(container_abs) :]  # 可能为 []
+
+            # 第一个“变化维度”：数组索引或对象键；若为空，则“共同父”即容器本身
+            if rel_from_container:
+                first = rel_from_container[0]
+                rel_tail = rel_from_container[1:]
+                vary_kind = "list" if isinstance(first, int) else "dict"
+            else:
+                rel_tail = []
+                vary_kind = self._container_kind(container_idx)
+
+            # 确保列存在
+            col_map = self._ensure_columns(
+                self._confirmed_attr_headers, self._confirmed_attr_relpaths
+            )
+
+            if vary_kind == "list":
+                container_obj = self._get_by_path_safe(data_root, container_abs)
+                if not isinstance(container_obj, list):
+                    QMessageBox.warning(
+                        self, "Invalid range", "The chosen range is not an array."
+                    )
+                    self._reset_range_state()
+                    return
+                for i in range(len(container_obj)):
+                    base_path = container_abs + [i] + rel_tail
+                    self._append_row_by_relpaths(data_root, base_path, col_map)
+                    rows_added += 1
+
+            elif vary_kind == "dict":
+                container_obj = self._get_by_path_safe(data_root, container_abs)
+                if not isinstance(container_obj, dict):
+                    QMessageBox.warning(
+                        self, "Invalid range", "The chosen range is not an object."
+                    )
+                    self._reset_range_state()
+                    return
+                for k in list(container_obj.keys()):
+                    base_path = container_abs + [k] + rel_tail
+                    self._append_row_by_relpaths(data_root, base_path, col_map)
+                    rows_added += 1
+
+            else:
+                QMessageBox.warning(self, "Invalid range", "Unsupported range kind.")
+                self._reset_range_state()
+                return
+
+        # ---------- 收尾：清理高亮与状态 ----------
         self._confirmed_attr_paths.clear()
         self.tree.viewport().update()
+        self._reset_range_state()
 
         QMessageBox.information(self, "Done", f"Added {rows_added} row(s).")
 
@@ -700,7 +758,6 @@ class TableTab(QWidget):
         """删除所有列（清空所有装载的属性）。"""
         while self.table.columnCount() > 0:
             self.table.removeColumn(0)
-        
 
     # -----列：移动到某位置（最左/最右）-----
     def _move_column(self, src: int, dst_visual: int):
