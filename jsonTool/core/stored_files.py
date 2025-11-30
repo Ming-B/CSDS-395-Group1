@@ -2,7 +2,7 @@
 from __future__ import annotations
 import tkinter as tk
 from tkinter import ttk
-from .database import DatabaseMnager
+from .database import DatabaseManager
 
 class StoredFilesSidebar(ttk.Frame):
     """
@@ -16,7 +16,7 @@ class StoredFilesSidebar(ttk.Frame):
         :param on_file_select: Callback function(file_info) when a file is selected
         """
         super().__init__(parent, **kwargs)
-        self.manager = DatabaseMnager()
+        self.manager = DatabaseManager()
         self.on_file_select = on_file_select
 
         self._build_widgets()

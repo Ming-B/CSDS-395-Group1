@@ -207,7 +207,7 @@ class MainWindow(QMainWindow):
         hl.addWidget(self.btn_undo)
         hl.addWidget(self.btn_redo)
 
-        menubar.setCornerWidget(corner, Qt.TopLeftCorner)
+        menubar.setCornerWidget(corner, Qt.Corner.TopLeftCorner)
 
         # Initial state
         self._refresh_history_buttons()
@@ -474,11 +474,11 @@ class MainWindow(QMainWindow):
                 self, 
                 "Store to Storage", 
                 f"Do you want to store '{file_path.name}' to storage?\n\n(File will be saved to stored_files/ directory)",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.Yes
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.Yes
             )
             
-            if reply == QMessageBox.Yes:
+            if reply == QMessageBox.StandardButton.Yes:
                 self.set_busy(True, "Storing file...")
                 
                 # Get current JSON data

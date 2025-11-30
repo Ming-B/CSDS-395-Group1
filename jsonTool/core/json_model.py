@@ -235,7 +235,7 @@ class JsonModel(QAbstractItemModel):
         self.endResetModel()
         return True
 
-    def data(self, index: QModelIndex, role: Qt.ItemDataRole) -> Any:
+    def data(self, index: QModelIndex, role: int = Qt.ItemDataRole) -> Any:
         if not index.isValid():
             return None
 
@@ -267,8 +267,9 @@ class JsonModel(QAbstractItemModel):
                 return "" if item.value is None else item.value
             if index.column() == 0:
                 return item.key
-
-    def setData(self, index: QModelIndex, value: Any, role: Qt.ItemDataRole):
+        return None
+    
+    def setData(self, index: QModelIndex, value: Any, role: int = Qt.ItemDataRole):
         if role != Qt.ItemDataRole.EditRole or not index.isValid():
             return False
 
@@ -341,12 +342,13 @@ class JsonModel(QAbstractItemModel):
         return False
 
     def headerData(
-        self, section: int, orientation: Qt.Orientation, role: Qt.ItemDataRole
+        self, section: int, orientation: Qt.Orientation, role: int = Qt.ItemDataRole
     ):
         if role != Qt.ItemDataRole.DisplayRole:
             return None
         if orientation == Qt.Orientation.Horizontal:
             return self._headers[section]
+        return None
 
     def index(self, row: int, column: int, parent=QModelIndex()) -> QModelIndex:
         if not self.hasIndex(row, column, parent):
