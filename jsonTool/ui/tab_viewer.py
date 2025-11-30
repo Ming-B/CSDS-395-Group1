@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-import json
 
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QTreeView, QHeaderView, QPushButton,
@@ -11,10 +10,7 @@ from PySide6.QtCore import Slot, QModelIndex, Qt
 
 from jsonTool.core.json_model import JsonModel
 from jsonTool.core.document import JSONDocument
-from jsonTool.ui.tab_editor import EditorTab
-from jsonTool.ui.tab_splitter import SplitterTab
-from jsonTool.ui.tab_table import TableTab
-from jsonTool.core.recent_files import RecentFilesManager
+
 from jsonTool.core.database import get_database_manager
 from PySide6.QtCore import Signal
 
@@ -420,8 +416,8 @@ class ViewerTab(QWidget):
                 self, 
                 "Store to Storage", 
                 f"Do you want to store '{file_path.name}' to storage?\n\n(File will be saved to stored_files/ directory)",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.Yes
+                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+                QMessageBox.StandardButton.Yes
             )
             
             if reply == QMessageBox.Yes:

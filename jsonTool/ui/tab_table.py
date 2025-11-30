@@ -83,7 +83,7 @@ class RangeTreeView(QTreeView):
         mods = event.modifiers()
 
         # -----Shift 连选：同一父节点范围-----
-        if (mods & Qt.ShiftModifier) and self.anchor_index and idx.isValid():
+        if (mods & Qt.KeyboardModifier.ShiftModifier) and self.anchor_index and idx.isValid():
             a = self.anchor_index.sibling(self.anchor_index.row(), 0)
             b = idx.sibling(idx.row(), 0)
             if a.parent() == b.parent():
@@ -96,20 +96,20 @@ class RangeTreeView(QTreeView):
                     model.index(end, model.columnCount() - 1, parent),
                 )
                 sm = self.selectionModel()
-                if mods & (Qt.ControlModifier | Qt.MetaModifier):
+                if mods & (Qt.KeyboardModifier.ControlModifier):
                     sm.select(
-                        sel, QItemSelectionModel.Select | QItemSelectionModel.Rows
+                        sel, QItemSelectionModel.SelectionFlag.Select
                     )
                 else:
                     sm.clearSelection()
                     sm.select(
-                        sel, QItemSelectionModel.Select | QItemSelectionModel.Rows
+                        sel, QItemSelectionModel.SelectionFlag.Select
                     )
                 self.setCurrentIndex(idx)
                 return
 
         super().mousePressEvent(event)
-        if not (mods & Qt.ShiftModifier):
+        if not (mods & Qt.KeyboardModifier.ShiftModifier):
             if idx.isValid():
                 self.anchor_index = idx
 
@@ -163,11 +163,9 @@ class TableTab(QWidget):
         self.table.setRowCount(0)
         self.table.setEditTriggers(
             QAbstractItemView.EditTrigger.DoubleClicked
-            | QAbstractItemView.EditTrigger.EditKeyPressed
-            | QAbstractItemView.EditTrigger.SelectedClicked
         )
         self.table.setAlternatingRowColors(True)
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
         # 允许拖拽重排列头（视觉重排）
         self.table.horizontalHeader().setSectionsMovable(True)
 
@@ -194,12 +192,12 @@ class TableTab(QWidget):
         self.btn_add_attr.clicked.connect(self._action_add_to_table)
 
         # 表头右键（列）
-        self.table.horizontalHeader().setContextMenuPolicy(Qt.CustomContextMenu)
+        self.table.horizontalHeader().setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.table.horizontalHeader().customContextMenuRequested.connect(
             self._on_header_context_menu
         )
         # 行头右键（行）
-        self.table.verticalHeader().setContextMenuPolicy(Qt.CustomContextMenu)
+        self.table.verticalHeader().setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
         self.table.verticalHeader().customContextMenuRequested.connect(
             self._on_rows_context_menu
         )
@@ -230,7 +228,7 @@ class TableTab(QWidget):
         root.addLayout(bar)
 
         # 分割器
-        splitter = QSplitter(Qt.Horizontal, self)
+        splitter = QSplitter(Qt.Orientation.Horizontal, self)
         root.addWidget(splitter, 1)
 
         # 左：JSON 视图（超出自动滚动）
@@ -240,8 +238,8 @@ class TableTab(QWidget):
         lv.setSpacing(4)
 
         header = self.tree.header()
-        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.Stretch)
+        header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         lv.addWidget(self.tree, 1)
 
         # 右：表格视图（超出自动滚动）
@@ -297,7 +295,7 @@ class TableTab(QWidget):
             return
 
         msg = QMessageBox(self)
-        msg.setIcon(QMessageBox.Question)
+        msg.setIcon(QMessageBox.Icon.Question)
         msg.setWindowTitle("Clear existing table?")
         msg.setText(
             "You have just switched to a new JSON file.\n"
@@ -305,8 +303,8 @@ class TableTab(QWidget):
         )
 
         # 添加两个按钮：Clear / Keep
-        btn_clear = msg.addButton("Clear", QMessageBox.AcceptRole)
-        btn_keep = msg.addButton("Keep", QMessageBox.RejectRole)
+        btn_clear = msg.addButton("Clear", QMessageBox.ButtonRole.AcceptRole)
+        btn_keep = msg.addButton("Keep", QMessageBox.ButtonRole.RejectRole)
         msg.setDefaultButton(btn_clear)
 
         msg.exec()

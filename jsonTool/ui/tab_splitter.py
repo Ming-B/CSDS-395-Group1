@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, List, Tuple, Dict
@@ -10,7 +9,7 @@ from typing import Any, List, Tuple, Dict
 from PySide6.QtCore import Qt, QModelIndex, QItemSelection, QItemSelectionModel, Slot
 from PySide6.QtWidgets import (
     QWidget, QSplitter, QVBoxLayout, QHBoxLayout, QPushButton, QTreeView,
-    QHeaderView, QTableWidget, QTableWidgetItem, QFileDialog, QMessageBox, QFrame,
+    QHeaderView, QTableWidget, QTableWidgetItem, QFileDialog, QMessageBox,
     QLabel, QToolButton, QMenu
 )
 
@@ -56,11 +55,11 @@ class RangeTreeView(QTreeView):
                     model.index(end, model.columnCount() - 1, parent),
                 )
                 sm = self.selectionModel()
-                if mods & (Qt.KeyboardModifier.ControlModifier | Qt.KeyboardModifier.MetaModifier):
-                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select | QItemSelectionModel.SelectionFlag.Rows)
+                if mods & (Qt.KeyboardModifier.ControlModifier):
+                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select)
                 else:
                     sm.clearSelection()
-                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select | QItemSelectionModel.SelectionFlag.Rows)
+                    sm.select(sel, QItemSelectionModel.SelectionFlag.Select)
                 self.setCurrentIndex(idx)
                 # Do not update anchor on SHIFT gesture
                 return
